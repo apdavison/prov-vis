@@ -1,0 +1,18 @@
+import React from 'react';
+
+function VLine(props) {
+    let styleObj = {
+        top: props.y0 + "px",
+        left: props.x,
+        width: "2px",
+        height: (props.y1 - props.y0) + "px",
+        "background-color": "gray",
+        position: "fixed"
+    };
+
+    return (
+        <div style={styleObj} />
+    )
+}
+
+export default VLine;
