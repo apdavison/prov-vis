@@ -1,37 +1,39 @@
 import React from 'react';
 import Stage from './Stage';
 import Connector from './Connector';
+import {
+    graphlib,
+    layout as dagreLayout,
+} from "dagre";
 
-
-// const data = [
-//     {type: "entity",   id: "1",  x: "300", y: "50"},
-//     {type: "activity", id: "2a", x: "50",  y: "200"},
-//     {type: "entity",   id: "2b", x: "550", y: "200"},
-//     {type: "entity",   id: "3a", x: "550", y: "350"},
-//     {type: "entity",   id: "4a", x: "300", y: "500"},
-//     {type: "entity",   id: "4b", x: "800", y: "500"}
-// ];
 
 const data = [
     {
         type: "entity",
-        id: "1", x: 375, y: 100,
+        label: "1",
         children: [
             {
                 type: "activity",
-                id: "2a", x: 125, y: 250,
+                label: "2a",
                 children: []
             },
             {
                 type: "entity",
-                id: "2b", x: 625, y: 250,
+                label: "2b",
                 children: [
                     {
                         type: "entity",
-                        id: "3a", x: 625, y: 400,
+                        label: "3a",
                         children: [
-                            {type: "entity",   id: "4a", x: 375, y: 550, children: []},
-                            {type: "entity",   id: "4b", x: 875, y: 550, children: []}
+                            {
+                                type: "entity",
+                                label: "4a",
+                                children: []
+                            },
+                            {
+                                type: "entity",
+                                label: "4b",
+                                children: []}
                         ]
                     },
                 ]
@@ -40,30 +42,68 @@ const data = [
     }
 ];
 
+
+const size = {
+    height: 100,
+    width: 150
+};
+
+
+function layout(flowchart, config) {
+    var g = new graphlib.Graph();
+    // Set an object for the graph label
+    g.setGraph(config);
+    // Default to assigning a new object as a label for each new edge.
+    g.setDefaultEdgeLabel(function() { return {}; });
+    // Add nodes to the graph.
+    function addNode(g, item, parent) {
+        g.setNode(item.label, {width: size.width, height: size.height, type: item.type});
+        if (parent !== null) {
+            g.setEdge(parent.label, item.label);
+        }
+        item.children.forEach(childItem => addNode(g, childItem, item));
+    }
+    flowchart.forEach(item => addNode(g, item, null));
+    // Use dagre to perform layout
+    dagreLayout(g);
+    return g;
+}
+
+
 function App() {
 
-    const size = {
-        height: 100,
-        width: 150
+    const config = {
+        marginx: 100,
+        marginy: 100,
+        nodesep: 100,
+        ranksep: 50
     };
-
-    function renderStage(item, parent) {
-        return (
-            <div>
-                <Stage type={item.type} id={item.id} x={item.x} y={item.y} size={size}/>
-                <Connector from={parent} to={item} size={size}/>
-                {item.children.map((childItem, index) => {
-                    return renderStage(childItem, item)
-                })}
-            </div>
-        )
-    };
+    const g = layout(data, config);
 
     return (
         <div className="App">
-            {data.map((item, index) => {
-                return renderStage(item, null)  // top-level stages have 'parent' set to null
-            })}
+            {
+                g.nodes().map((label, index) => {
+                    let item = g.node(label);
+                    item["label"] = label;
+                    return (
+                        <div>
+                            <Stage type={item.type} label={label} x={item.x} y={item.y} size={size}/>
+                        </div>
+                    )
+                })
+            }
+            {
+                g.edges().map((edge, index) => {
+                    let parent = g.node(edge.v);
+                    let item = g.node(edge.w);
+                    return (
+                        <div>
+                            <Connector from={parent} to={item} size={size}/>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 }

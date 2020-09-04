@@ -18,8 +18,8 @@ function Stage(props) {
     };
 
     return (
-        <div id="stage{props.id}" style={styleObj}>
-            <p>Stage {props.id}</p>
+        <div id="stage{props.label}" style={styleObj}>
+            <p>Stage {props.label}</p>
         </div>
     )
 }
