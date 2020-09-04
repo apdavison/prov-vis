@@ -13,7 +13,7 @@ function Stage(props) {
         left: props.x - width/2 + "px",
         width: width + "px",
         height: height + "px",
-        "background-color": colours[props.type],
+        backgroundColor: colours[props.type],
         position: "fixed"
     };
 

@@ -6,7 +6,7 @@ function VLine(props) {
         left: props.x + "px",
         width: "2px",
         height: (props.y1 - props.y0) + "px",
-        "background-color": "gray",
+        backgroundColor: "gray",
         position: "fixed"
     };
     console.log("vline: top=" + styleObj.top + " left=" + styleObj.left);
