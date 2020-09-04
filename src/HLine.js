@@ -2,7 +2,7 @@ import React from 'react';
 
 function HLine(props) {
     let styleObj = {
-        top: props.y,
+        top: props.y + "px",
         left: props.x0 + "px",
         width: (props.x1 - props.x0) + "px",
         height: "2px",

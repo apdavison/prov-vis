@@ -6,11 +6,13 @@ const colours = {
 }
 
 function Stage(props) {
+    const width = props.size.width;
+    const height = props.size.height;
     let styleObj = {
-        top: props.y + "px",
-        left: props.x + "px",
-        width: "150px",
-        height: "100px",
+        top: props.y - height/2 + "px",
+        left: props.x - width/2 + "px",
+        width: width + "px",
+        height: height + "px",
         "background-color": colours[props.type],
         position: "fixed"
     };

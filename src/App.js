@@ -1,7 +1,6 @@
 import React from 'react';
 import Stage from './Stage';
-import HLine from './HLine';
-import VLine from './VLine';
+import Connector from './Connector';
 
 
 // const data = [
@@ -16,23 +15,23 @@ import VLine from './VLine';
 const data = [
     {
         type: "entity",
-        id: "1", x: "300", y: "50",
+        id: "1", x: 375, y: 100,
         children: [
             {
                 type: "activity",
-                id: "2a", x: "50", y: "200",
+                id: "2a", x: 125, y: 250,
                 children: []
             },
             {
                 type: "entity",
-                id: "2b", x: "550", y: "200",
+                id: "2b", x: 625, y: 250,
                 children: [
                     {
                         type: "entity",
-                        id: "3a", x: "550", y: "350",
+                        id: "3a", x: 625, y: 400,
                         children: [
-                            {type: "entity",   id: "4a", x: "300", y: "500", children: []},
-                            {type: "entity",   id: "4b", x: "800", y: "500", children: []}
+                            {type: "entity",   id: "4a", x: 375, y: 550, children: []},
+                            {type: "entity",   id: "4b", x: 875, y: 550, children: []}
                         ]
                     },
                 ]
@@ -43,12 +42,18 @@ const data = [
 
 function App() {
 
-    function renderStage(item) {
+    const size = {
+        height: 100,
+        width: 150
+    };
+
+    function renderStage(item, parent) {
         return (
             <div>
-                <Stage type={item.type} id={item.id} x={item.x} y={item.y} />
+                <Stage type={item.type} id={item.id} x={item.x} y={item.y} size={size}/>
+                <Connector from={parent} to={item} size={size}/>
                 {item.children.map((childItem, index) => {
-                    return renderStage(childItem)
+                    return renderStage(childItem, item)
                 })}
             </div>
         )
@@ -56,12 +61,9 @@ function App() {
 
     return (
         <div className="App">
-
             {data.map((item, index) => {
-                return renderStage(item)
+                return renderStage(item, null)  // top-level stages have 'parent' set to null
             })}
-            <VLine x="375px" y0="150" y1="175" />
-            <HLine x0="125" x1="625" y="175px" />
         </div>
     );
 }
