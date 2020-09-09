@@ -9,30 +9,42 @@ import {
 
 const data = [
     {
-        type: "entity",
-        label: "1",
+        type_: "entity",
+        label: "1.cghmwhgcmeorzhbcmoerzhbcmrjbc;b oigmerogx eomxiguersgnce oaexoeasg roigmxoruieug xrimgxu",
+        timestamp: "2020-09-23T12:43:34",
+        attributed_to: "Michael Palin",
         children: [
             {
-                type: "activity",
+                type_: "activity",
                 label: "2a",
+                timestamp: "2020-09-23T12:43:34",
+                attributed_to: "Michael Palin",
                 children: []
             },
             {
-                type: "entity",
+                type_: "entity",
                 label: "2b",
+                timestamp: "2020-09-23T12:43:34",
+                attributed_to: "Michael Palin",
                 children: [
                     {
-                        type: "entity",
+                        type_: "entity",
                         label: "3a",
+                        timestamp: "2020-09-23T12:43:34",
+                        attributed_to: "Michael Palin",
                         children: [
                             {
-                                type: "entity",
+                                type_: "entity",
                                 label: "4a",
+                                timestamp: "2020-09-23T12:43:34",
+                                attributed_to: "Michael Palin",
                                 children: []
                             },
                             {
-                                type: "entity",
+                                type_: "entity",
                                 label: "4b",
+                                timestamp: "2020-09-23T12:43:34",
+                                attributed_to: "Michael Palin",
                                 children: []}
                         ]
                     },
@@ -44,8 +56,8 @@ const data = [
 
 
 const size = {
-    height: 100,
-    width: 150
+    height: 200,
+    width: 300
 };
 
 
@@ -57,7 +69,14 @@ function layout(flowchart, config) {
     g.setDefaultEdgeLabel(function() { return {}; });
     // Add nodes to the graph.
     function addNode(g, item, parent) {
-        g.setNode(item.label, {width: size.width, height: size.height, type: item.type});
+        g.setNode(item.label,
+            {
+                width: size.width,
+                height: size.height,
+                type: item.type_,
+                timestamp: item.timestamp,
+                attributedTo: item.attributed_to
+            });
         if (parent !== null) {
             g.setEdge(parent.label, item.label);
         }
@@ -88,7 +107,8 @@ function App() {
                     item["label"] = label;
                     return (
                         <div>
-                            <Stage type={item.type} label={label} x={item.x} y={item.y} size={size}/>
+                            <Stage type={item.type} label={label} x={item.x} y={item.y} size={size}
+                                   timestamp={item.timestamp} attributedTo={item.attributedTo} />
                         </div>
                     )
                 })

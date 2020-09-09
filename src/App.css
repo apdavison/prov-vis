@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+  overflow-x: scroll;
 }
 
+p.avoid-overflow {
+  word-break: break-all;
+  white-space: normal;
+}
 
 .entity {
   background-color: moccasin;

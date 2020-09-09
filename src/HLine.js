@@ -7,7 +7,7 @@ function HLine(props) {
         width: (props.x1 - props.x0) + "px",
         height: "2px",
         backgroundColor: "gray",
-        position: "fixed"
+        position: "absolute"
     };
 
     return (
