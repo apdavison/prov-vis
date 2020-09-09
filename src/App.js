@@ -1,12 +1,33 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
 import Stage from './Stage';
 import Connector from './Connector';
+import SideBar from './SideBar';
+
 import {
     graphlib,
     layout as dagreLayout,
 } from "dagre";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
+    content: {
+      flexGrow: 1,
+      padding: theme.spacing(3),
+    },
+  }));
 
+/*
 const data = [
     {
         type_: "entity",
@@ -53,7 +74,8 @@ const data = [
         ]
     }
 ];
-
+*/
+const data = require('./example_data.json');
 
 const size = {
     height: 200,
@@ -90,17 +112,38 @@ function layout(flowchart, config) {
 
 
 function App() {
+    const classes = useStyles();
 
     const config = {
-        marginx: 100,
+        marginx: 240 + 50,  // same as drawerWidth in SideBar.js
         marginy: 100,
         nodesep: 100,
         ranksep: 50
     };
-    const g = layout(data, config);
+
+    const pipelines = data[0].children;
+
+
+    function displayPipeline(index) {
+        console.log("Change displayed pipeline");
+        console.log(index);
+        //const g = layout(pipelines[index], config);
+    }
+    let g = layout(data, config);
 
     return (
-        <div className="App">
+        <div className={classes.root}>
+            <CssBaseline />
+            <AppBar position="fixed" className={classes.appBar}>
+                <Toolbar>
+                    <Typography variant="h6" noWrap>
+                    Toolbar
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <SideBar pipelines={pipelines} handleSelect={displayPipeline}/>
+            <main className={classes.content}>
+            <Toolbar />
             {
                 g.nodes().map((label, index) => {
                     let item = g.node(label);
@@ -124,6 +167,7 @@ function App() {
                     )
                 })
             }
+            </main>
         </div>
     );
 }

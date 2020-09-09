@@ -9,11 +9,11 @@ function Connector(props) {
     }
     const startPoint = {
         x: props.from.x,
-        y: props.from.y + props.size.height/2
+        y: props.from.y //+ props.size.height/2
     };
     const endPoint = {
         x: props.to.x,
-        y: props.to.y - props.size.height/2
+        y: props.to.y //- props.size.height/2
     }
     const dx = endPoint.x - startPoint.x;
     if (dx > 0) {
