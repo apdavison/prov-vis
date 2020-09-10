@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -114,6 +114,8 @@ function layout(flowchart, config) {
 function App() {
     const classes = useStyles();
 
+    const pipelines = data[0].children;
+
     const config = {
         marginx: 240 + 50,  // same as drawerWidth in SideBar.js
         marginy: 100,
@@ -121,15 +123,17 @@ function App() {
         ranksep: 50
     };
 
-    const pipelines = data[0].children;
-
+    const [state, setState] = useState({
+        index: 0,
+        graph: layout([pipelines[0]], config)
+    });
 
     function displayPipeline(index) {
         console.log("Change displayed pipeline");
         console.log(index);
-        //const g = layout(pipelines[index], config);
+        const g = layout([pipelines[index]], config);
+        setState({index: index, graph: g});
     }
-    let g = layout(data, config);
 
     return (
         <div className={classes.root}>
@@ -141,12 +145,12 @@ function App() {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SideBar pipelines={pipelines} handleSelect={displayPipeline}/>
+            <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={state.index} />
             <main className={classes.content}>
             <Toolbar />
             {
-                g.nodes().map((label, index) => {
-                    let item = g.node(label);
+                state.graph.nodes().map((label, index) => {
+                    let item = state.graph.node(label);
                     item["label"] = label;
                     return (
                         <div>
@@ -157,9 +161,9 @@ function App() {
                 })
             }
             {
-                g.edges().map((edge, index) => {
-                    let parent = g.node(edge.v);
-                    let item = g.node(edge.w);
+                state.graph.edges().map((edge, index) => {
+                    let parent = state.graph.node(edge.v);
+                    let item = state.graph.node(edge.w);
                     return (
                         <div>
                             <Connector from={parent} to={item} size={size}/>

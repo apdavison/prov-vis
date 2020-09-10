@@ -57,7 +57,10 @@ export default function SideBar(props) {
         <div className={classes.drawerContainer}>
           <List>
             {sortedPipelines.map((obj, index) => (
-              <ListItem button key={index} onClick={()=>props.handleSelect(index)}>
+              <ListItem button
+                    key={index}
+                    onClick={()=>props.handleSelect(index)}
+                    selected={props.selectedIndex === index}>
                 <ListItemText
                     primary={truncate(obj.label, TRUNCATE_AT)}
                     secondary={obj.timestamp}
