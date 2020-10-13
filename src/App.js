@@ -15,6 +15,8 @@ import {
     layout as dagreLayout,
 } from "dagre";
 
+const USE_EXAMPLE_DATA = false;
+
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -77,27 +79,23 @@ const data = [
 ];
 */
 
+
 const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
 
-export function getPipelines(startingPointType, startingPointID, auth) {
 
-    let url = baseUrl + "/pipeline/?type_=" + startingPointType + "&id=" + startingPointID + "&direction=downstream&max_depth=10";
+
+export function getPipelines(startingPointType, startingPointID, auth, max_depth) {
+
+    let url = baseUrl + "/pipeline/?type_=" + startingPointType + "&id=" + startingPointID + "&direction=downstream&max_depth=" + max_depth;
     let config = {
         headers: {
             'Authorization': 'Bearer ' + auth.token,
         }
     }
     return axios.get(url, config)
-        // .then(res => {
-        //     console.log(res);
-        //     return res.data;
-        // })
-        // .catch(err => {
-        //     console.log('Error: ', err.message);
-        // });
 };
 
-//const data = require('./example_data.json');
+const example_data = require('./example_data.json');
 
 
 const size = {
@@ -120,7 +118,10 @@ function layout(flowchart, config) {
                 height: size.height,
                 type: item.type_,
                 timestamp: item.timestamp,
-                attributedTo: item.attributed_to
+                attributedTo: item.attributed_to,
+                desciption: item.description,
+                code: item.code,
+                output: item.output
             });
         if (parent !== null) {
             g.setEdge(parent.label, item.label);
@@ -152,21 +153,31 @@ function App(props) {
 
     useEffect(() => {
         console.log("Getting pipeline data")
-        getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
-                     "542e63ea-e096-415b-9ca7-36e37c4fe332",
-                    props.auth)
-        .then(res => {
-            console.log(res);
-            let pipelines = res.data[0].children;
+        if (USE_EXAMPLE_DATA) {
+            let pipelines = example_data[0].children;
             setState({
                 index: 0,
                 pipelines: pipelines,
                 graph: layout([pipelines[0]], config)
             })
-        })
-        .catch(err => {
-            console.log('Error: ', err.message);
-        });
+        } else {
+            getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
+                        "542e63ea-e096-415b-9ca7-36e37c4fe332",
+                        props.auth,
+                        10)
+            .then(res => {
+                console.log(res);
+                let pipelines = res.data[0].children;
+                setState({
+                    index: 0,
+                    pipelines: pipelines,
+                    graph: layout([pipelines[0]], config)
+                })
+            })
+            .catch(err => {
+                console.log('Error: ', err.message);
+            });
+        }
     }, []);
 
     function displayPipeline(index) {

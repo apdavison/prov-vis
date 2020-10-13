@@ -3,7 +3,23 @@ import Stage from './Stage';
 import Connector from './Connector';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import StageDetail from './StageDetail'
+
 export default function FlowChart(props) {
+
+    const [dialogIsOpen, openDialog] = React.useState(false);
+    const [currentItem, setCurrentItem] = React.useState({});
+
+    const handleDialogOpen = (label) => {
+        console.log("click");
+        openDialog(true);
+        let item = props.graph.node(label);
+        setCurrentItem(item);
+    };
+
+    const handleDialogClose = () => {
+        openDialog(false);
+    };
 
     if (props.graph) {
 
@@ -14,9 +30,9 @@ export default function FlowChart(props) {
                     let item = props.graph.node(label);
                     item["label"] = label;
                     return (
-                        <div>
+                        <div onClick={() => handleDialogOpen(label)} key={"node" + index}>
                             <Stage type={item.type} label={label} x={item.x} y={item.y} size={props.size}
-                                timestamp={item.timestamp} attributedTo={item.attributedTo} key={"node" + index} />
+                                timestamp={item.timestamp} attributedTo={item.attributedTo} />
                         </div>
                     )
                 })
@@ -26,18 +42,19 @@ export default function FlowChart(props) {
                     let parent = props.graph.node(edge.v);
                     let item = props.graph.node(edge.w);
                     return (
-                        <div>
-                            <Connector from={parent} to={item} size={props.size}  key={"edge" + index} />
+                        <div key={"edge" + index}>
+                            <Connector from={parent} to={item} size={props.size} />
                         </div>
                     )
                 })
             }
+            <StageDetail open={dialogIsOpen} onClose={handleDialogClose} item={currentItem} />
             </div>
         )
     } else {
         return (
             <div style={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>
-                <CircularProgress />;
+                <CircularProgress />
             </div>
         )
     }
