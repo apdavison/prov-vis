@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import Stage from './Stage';
-import Connector from './Connector';
 import SideBar from './SideBar';
+import FlowChart from './Flowchart';
+
+import axios from 'axios';
 
 import {
     graphlib,
@@ -75,7 +76,29 @@ const data = [
     }
 ];
 */
-const data = require('./example_data.json');
+
+const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
+
+export function getPipelines(startingPointType, startingPointID, auth) {
+
+    let url = baseUrl + "/pipeline/?type_=" + startingPointType + "&id=" + startingPointID + "&direction=downstream&max_depth=10";
+    let config = {
+        headers: {
+            'Authorization': 'Bearer ' + auth.token,
+        }
+    }
+    return axios.get(url, config)
+        // .then(res => {
+        //     console.log(res);
+        //     return res.data;
+        // })
+        // .catch(err => {
+        //     console.log('Error: ', err.message);
+        // });
+};
+
+//const data = require('./example_data.json');
+
 
 const size = {
     height: 200,
@@ -111,10 +134,8 @@ function layout(flowchart, config) {
 }
 
 
-function App() {
+function App(props) {
     const classes = useStyles();
-
-    const pipelines = data[0].children;
 
     const config = {
         marginx: 240 + 50,  // same as drawerWidth in SideBar.js
@@ -125,14 +146,34 @@ function App() {
 
     const [state, setState] = useState({
         index: 0,
-        graph: layout([pipelines[0]], config)
+        pipelines: [],
+        graph: null
     });
+
+    useEffect(() => {
+        console.log("Getting pipeline data")
+        getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
+                     "542e63ea-e096-415b-9ca7-36e37c4fe332",
+                    props.auth)
+        .then(res => {
+            console.log(res);
+            let pipelines = res.data[0].children;
+            setState({
+                index: 0,
+                pipelines: pipelines,
+                graph: layout([pipelines[0]], config)
+            })
+        })
+        .catch(err => {
+            console.log('Error: ', err.message);
+        });
+    }, []);
 
     function displayPipeline(index) {
         console.log("Change displayed pipeline");
         console.log(index);
-        const g = layout([pipelines[index]], config);
-        setState({index: index, graph: g});
+        const g = layout([state.pipelines[index]], config);
+        setState({index: index, graph: g, pipelines: state.pipelines});
     }
 
     return (
@@ -145,32 +186,10 @@ function App() {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={state.index} />
+            <SideBar pipelines={state.pipelines} handleSelect={displayPipeline} selectedIndex={state.index} />
             <main className={classes.content}>
             <Toolbar />
-            {
-                state.graph.nodes().map((label, index) => {
-                    let item = state.graph.node(label);
-                    item["label"] = label;
-                    return (
-                        <div>
-                            <Stage type={item.type} label={label} x={item.x} y={item.y} size={size}
-                                   timestamp={item.timestamp} attributedTo={item.attributedTo} />
-                        </div>
-                    )
-                })
-            }
-            {
-                state.graph.edges().map((edge, index) => {
-                    let parent = state.graph.node(edge.v);
-                    let item = state.graph.node(edge.w);
-                    return (
-                        <div>
-                            <Connector from={parent} to={item} size={size}/>
-                        </div>
-                    )
-                })
-            }
+            <FlowChart graph={state.graph} size={size} />
             </main>
         </div>
     );
