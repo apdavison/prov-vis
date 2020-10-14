@@ -17,7 +17,7 @@ import {
 
 
 const USE_EXAMPLE_DATA = false;
-const example_data = require('./example_data.json');
+const exampleData = require('./example_data.json');
 const MAX_DEPTH = 10;
 const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
 
@@ -90,6 +90,18 @@ function layout(flowchart, config) {
 }
 
 
+function byDate(obj1, obj2) {
+    // most recent first
+    if (obj1.timestamp < obj2.timestamp) {
+        return 1;
+    }
+    if (obj1.timestamp > obj2.timestamp) {
+        return -1;
+    }
+    return 0;
+};
+
+
 function App(props) {
     const classes = useStyles();
 
@@ -104,27 +116,26 @@ function App(props) {
     const [pipelines, setPipelines] = useState([]);
     const [graph, setGraph] = useState(null);
     const [loaded, setLoaded] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         //console.log("Getting pipeline data")
         if (USE_EXAMPLE_DATA) {
-            let pipelines = example_data[0].children;
-            setIndex(0);
-            setPipelines(pipelines);
-            setGraph(layout([pipelines[0]], config));
-            setLoaded(new Array(pipelines.length).fill(true))
+            let examplePipelines = exampleData[0].children.slice().sort(byDate);
+            setPipelines(examplePipelines);
+            setLoaded(new Array(examplePipelines.length).fill(true));
         } else {
+            setLoading(true);
             getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
                          "542e63ea-e096-415b-9ca7-36e37c4fe332",
                          props.auth,
                          0)
             .then(res => {
                 //console.log(res);
-                let pipelines = res.data[0].children;
-                setIndex(0);
-                setPipelines(pipelines);
-                setGraph(layout([pipelines[0]], config));
-                setLoaded(new Array(pipelines.length).fill(false))
+                setLoading(false);
+                let initialStages = res.data[0].children.slice().sort(byDate);
+                setPipelines(initialStages);
+                setLoaded(new Array(initialStages.length).fill(false));
             })
             .catch(err => {
                 console.log('Error: ', err.message);
@@ -132,35 +143,37 @@ function App(props) {
         }
     }, []);
 
-    function displayPipeline(index) {
-        //console.log("Change displayed pipeline " + index);
+    function displayPipeline(newIndex) {
+        //console.log("Change displayed pipeline " + newIndex);
         //console.log(loaded);
-        if (!loaded[index]) {
-            //console.log("Getting pipeline data for #" + index);
-            let startingPoint = pipelines[index];
+        setGraph(null);
+        if (!loaded[newIndex]) {
+            //console.log("Getting pipeline data for #" + newIndex);
+            let startingPoint = pipelines[newIndex];
+            setLoading(true);
             getPipelines(startingPoint.type_,
                          extractUUID(startingPoint.uri),
                          props.auth,
                          MAX_DEPTH)
             .then(res => {
                 //console.log(res.data[0]);
+                setLoading(false);
                 let newPipelines = [...pipelines];
-                newPipelines[index] = res.data[0];
-                const g = layout([newPipelines[index]], config);
-                setIndex(index);
-                setGraph(g);
+                newPipelines[newIndex] = res.data[0];
+                const g = layout([newPipelines[newIndex]], config);
                 setPipelines(newPipelines);
+                setIndex(newIndex);
+                setGraph(g);
             }).catch(err => {
                 console.log('Error: ', err.message);
             });
             let newLoaded = [...loaded];
-            newLoaded[index] = true;
+            newLoaded[newIndex] = true;
             setLoaded(newLoaded);
         } else {
-            const g = layout([pipelines[index]], config);
-            setIndex(index);
+            const g = layout([pipelines[newIndex]], config);
+            setIndex(newIndex);
             setGraph(g);
-            setPipelines(pipelines);
         }
     }
 
@@ -177,7 +190,7 @@ function App(props) {
             <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
-            <FlowChart graph={graph} size={size} />
+            <FlowChart graph={graph} size={size} loading={loading} />
             </main>
         </div>
     );

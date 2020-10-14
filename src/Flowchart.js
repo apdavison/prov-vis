@@ -20,8 +20,7 @@ export default function FlowChart(props) {
         openDialog(false);
     };
 
-    if (props.graph) {
-
+    if (props.graph && !props.loading) {
         return (
             <div>
             {
@@ -50,11 +49,13 @@ export default function FlowChart(props) {
             <StageDetail open={dialogIsOpen} onClose={handleDialogClose} item={currentItem} />
             </div>
         )
-    } else {
+    } else if (props.loading) {
         return (
             <div style={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>
                 <CircularProgress />
             </div>
         )
+    } else {
+        return <p>Click in left column to load pipeline</p>
     }
 }

@@ -32,19 +32,6 @@ function truncate(str, n){
 export default function SideBar(props) {
   const classes = useStyles();
 
-  function byDate(obj1, obj2) {
-    // most recent first
-    if (obj1.timestamp < obj2.timestamp) {
-        return 1;
-    }
-    if (obj1.timestamp > obj2.timestamp) {
-        return -1;
-    }
-    return 0;
-  }
-
-  const sortedPipelines = props.pipelines.slice().sort(byDate);
-
   return (
       <Drawer
         className={classes.drawer}
@@ -56,7 +43,7 @@ export default function SideBar(props) {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {sortedPipelines.map((obj, index) => (
+            {props.pipelines.map((obj, index) => (
               <ListItem button
                     key={index}
                     onClick={()=>props.handleSelect(index)}
