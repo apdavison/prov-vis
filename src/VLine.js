@@ -10,7 +10,7 @@ function VLine(props) {
         position: "absolute",
         zIndex: -1
     };
-    console.log("vline: top=" + styleObj.top + " left=" + styleObj.left);
+    //console.log("vline: top=" + styleObj.top + " left=" + styleObj.left);
     return (
         <div style={styleObj} />
     )

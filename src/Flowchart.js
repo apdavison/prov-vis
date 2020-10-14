@@ -11,7 +11,6 @@ export default function FlowChart(props) {
     const [currentItem, setCurrentItem] = React.useState({});
 
     const handleDialogOpen = (label) => {
-        console.log("click");
         openDialog(true);
         let item = props.graph.node(label);
         setCurrentItem(item);

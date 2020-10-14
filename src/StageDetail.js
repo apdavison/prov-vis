@@ -25,10 +25,11 @@ import Paper from '@material-ui/core/Paper';
 //     },
 // }));
 
-function displayType(type_tuple) {
-    const parts = type_tuple.filter(name => !name.includes("Entity"));
+function displayType(type_identifier) {
+    //const parts = type_identifier.filter(name => !name.includes("Entity"));
     // assume parts.length == 1
-    return parts[0].split(":")[1];
+    //return parts[0].split(":")[1];
+    return type_identifier
 }
 
 export default function StageDetail(props) {
@@ -37,8 +38,8 @@ export default function StageDetail(props) {
     const handleClose = () => {
         props.onClose();
     };
-    console.log("Stage detail:");
-    console.log(props.item);
+    //console.log("Stage detail:");
+    //console.log(props.item);
     if (props.item.code) {
         return (
             <React.Fragment>

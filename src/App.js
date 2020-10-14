@@ -15,7 +15,16 @@ import {
     layout as dagreLayout,
 } from "dagre";
 
+
 const USE_EXAMPLE_DATA = false;
+const example_data = require('./example_data.json');
+const MAX_DEPTH = 10;
+const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
+
+const size = {
+    height: 200,
+    width: 300
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,77 +39,23 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-/*
-const data = [
-    {
-        type_: "entity",
-        label: "1.cghmwhgcmeorzhbcmoerzhbcmrjbc;b oigmerogx eomxiguersgnce oaexoeasg roigmxoruieug xrimgxu",
-        timestamp: "2020-09-23T12:43:34",
-        attributed_to: "Michael Palin",
-        children: [
-            {
-                type_: "activity",
-                label: "2a",
-                timestamp: "2020-09-23T12:43:34",
-                attributed_to: "Michael Palin",
-                children: []
-            },
-            {
-                type_: "entity",
-                label: "2b",
-                timestamp: "2020-09-23T12:43:34",
-                attributed_to: "Michael Palin",
-                children: [
-                    {
-                        type_: "entity",
-                        label: "3a",
-                        timestamp: "2020-09-23T12:43:34",
-                        attributed_to: "Michael Palin",
-                        children: [
-                            {
-                                type_: "entity",
-                                label: "4a",
-                                timestamp: "2020-09-23T12:43:34",
-                                attributed_to: "Michael Palin",
-                                children: []
-                            },
-                            {
-                                type_: "entity",
-                                label: "4b",
-                                timestamp: "2020-09-23T12:43:34",
-                                attributed_to: "Michael Palin",
-                                children: []}
-                        ]
-                    },
-                ]
-            }
-        ]
-    }
-];
-*/
 
-
-const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
-
-
-
-export function getPipelines(startingPointType, startingPointID, auth, max_depth) {
-
+function getPipelines(startingPointType, startingPointID, auth, max_depth) {
     let url = baseUrl + "/pipeline/?type_=" + startingPointType + "&id=" + startingPointID + "&direction=downstream&max_depth=" + max_depth;
     let config = {
         headers: {
             'Authorization': 'Bearer ' + auth.token,
         }
     }
+    console.log("Getting pipeline data from " + url);
     return axios.get(url, config)
 };
 
-const example_data = require('./example_data.json');
 
-
-const size = {
-    height: 200,
-    width: 300
+function extractUUID(uri) {
+    // could do something fancier with regex, but for now do something simple
+    const parts =  uri.split("/");
+    return parts[parts.length - 1]
 };
 
 
@@ -145,34 +100,31 @@ function App(props) {
         ranksep: 50
     };
 
-    const [state, setState] = useState({
-        index: 0,
-        pipelines: [],
-        graph: null
-    });
+    const [index, setIndex] = useState(0);
+    const [pipelines, setPipelines] = useState([]);
+    const [graph, setGraph] = useState(null);
+    const [loaded, setLoaded] = useState([]);
 
     useEffect(() => {
-        console.log("Getting pipeline data")
+        //console.log("Getting pipeline data")
         if (USE_EXAMPLE_DATA) {
             let pipelines = example_data[0].children;
-            setState({
-                index: 0,
-                pipelines: pipelines,
-                graph: layout([pipelines[0]], config)
-            })
+            setIndex(0);
+            setPipelines(pipelines);
+            setGraph(layout([pipelines[0]], config));
+            setLoaded(new Array(pipelines.length).fill(true))
         } else {
             getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
-                        "542e63ea-e096-415b-9ca7-36e37c4fe332",
-                        props.auth,
-                        10)
+                         "542e63ea-e096-415b-9ca7-36e37c4fe332",
+                         props.auth,
+                         0)
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 let pipelines = res.data[0].children;
-                setState({
-                    index: 0,
-                    pipelines: pipelines,
-                    graph: layout([pipelines[0]], config)
-                })
+                setIndex(0);
+                setPipelines(pipelines);
+                setGraph(layout([pipelines[0]], config));
+                setLoaded(new Array(pipelines.length).fill(false))
             })
             .catch(err => {
                 console.log('Error: ', err.message);
@@ -181,10 +133,35 @@ function App(props) {
     }, []);
 
     function displayPipeline(index) {
-        console.log("Change displayed pipeline");
-        console.log(index);
-        const g = layout([state.pipelines[index]], config);
-        setState({index: index, graph: g, pipelines: state.pipelines});
+        //console.log("Change displayed pipeline " + index);
+        //console.log(loaded);
+        if (!loaded[index]) {
+            //console.log("Getting pipeline data for #" + index);
+            let startingPoint = pipelines[index];
+            getPipelines(startingPoint.type_,
+                         extractUUID(startingPoint.uri),
+                         props.auth,
+                         MAX_DEPTH)
+            .then(res => {
+                //console.log(res.data[0]);
+                let newPipelines = [...pipelines];
+                newPipelines[index] = res.data[0];
+                const g = layout([newPipelines[index]], config);
+                setIndex(index);
+                setGraph(g);
+                setPipelines(newPipelines);
+            }).catch(err => {
+                console.log('Error: ', err.message);
+            });
+            let newLoaded = [...loaded];
+            newLoaded[index] = true;
+            setLoaded(newLoaded);
+        } else {
+            const g = layout([pipelines[index]], config);
+            setIndex(index);
+            setGraph(g);
+            setPipelines(pipelines);
+        }
     }
 
     return (
@@ -197,10 +174,10 @@ function App(props) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SideBar pipelines={state.pipelines} handleSelect={displayPipeline} selectedIndex={state.index} />
+            <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
-            <FlowChart graph={state.graph} size={size} />
+            <FlowChart graph={graph} size={size} />
             </main>
         </div>
     );
