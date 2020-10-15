@@ -3,16 +3,31 @@ import HLine from './HLine';
 import VLine from './VLine';
 
 
+function randomUniform(min, max) {
+  return Math.random() * (max - min) + min;
+};
+
+
+function getJitter(jitterAmount) {
+    if (jitterAmount) {
+        return randomUniform(-jitterAmount, jitterAmount);
+    } else {
+        return 0;
+    }
+};
+
+
 function Connector(props) {
     if (props.from === null) {
         return "";
     }
+    const jitter = getJitter(props.jitter);
     const startPoint = {
-        x: props.from.x,
+        x: props.from.x + jitter,
         y: props.from.y //+ props.size.height/2
     };
     const endPoint = {
-        x: props.to.x,
+        x: props.to.x + jitter,
         y: props.to.y //- props.size.height/2
     }
     const dx = endPoint.x - startPoint.x;

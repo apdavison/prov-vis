@@ -20,6 +20,7 @@ const USE_EXAMPLE_DATA = false;
 const exampleData = require('./example_data.json');
 const MAX_DEPTH = 10;
 const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
+const JITTER = 20;
 
 const size = {
     height: 200,
@@ -191,7 +192,7 @@ function App(props) {
             <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
-            <FlowChart graph={graph} size={size} loading={loading} />
+            <FlowChart graph={graph} size={size} jitter={JITTER} loading={loading} />
             </main>
         </div>
     );

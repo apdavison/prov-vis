@@ -50,7 +50,7 @@ export default function FlowChart(props) {
                     let item = props.graph.node(edge.w);
                     return (
                         <div key={"edge" + index}>
-                            <Connector from={parent} to={item} size={props.size} />
+                            <Connector from={parent} to={item} size={props.size} jitter={props.jitter} />
                         </div>
                     )
                 })
