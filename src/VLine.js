@@ -6,7 +6,7 @@ function VLine(props) {
         left: props.x + "px",
         width: "2px",
         height: (props.y1 - props.y0) + "px",
-        backgroundColor: "gray",
+        backgroundColor: props.colour,  //"gray",
         position: "absolute",
         zIndex: -1
     };

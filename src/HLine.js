@@ -6,7 +6,7 @@ function HLine(props) {
         left: props.x0 + "px",
         width: (props.x1 - props.x0) + "px",
         height: "2px",
-        backgroundColor: "gray",
+        backgroundColor: props.colour, //"gray",
         position: "absolute",
         zIndex: -1
     };

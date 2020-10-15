@@ -1,4 +1,5 @@
 import React from 'react';
+import randomColor from 'randomcolor';
 import HLine from './HLine';
 import VLine from './VLine';
 
@@ -31,26 +32,27 @@ function Connector(props) {
         y: props.to.y //- props.size.height/2
     }
     const dx = endPoint.x - startPoint.x;
+    const colour = randomColor({luminosity: 'dark'});
     if (dx > 0) {
         return (
             <React.Fragment>
-                <VLine x={startPoint.x} y0={startPoint.y} y1={(startPoint.y + endPoint.y)/2} />
-                <VLine x={endPoint.x} y1={endPoint.y} y0={(startPoint.y + endPoint.y)/2} />
-                <HLine x0={startPoint.x} x1={endPoint.x} y={(startPoint.y + endPoint.y)/2} />
+                <VLine x={startPoint.x} y0={startPoint.y} y1={(startPoint.y + endPoint.y)/2} colour={colour} />
+                <VLine x={endPoint.x} y1={endPoint.y} y0={(startPoint.y + endPoint.y)/2} colour={colour} />
+                <HLine x0={startPoint.x} x1={endPoint.x} y={(startPoint.y + endPoint.y)/2} colour={colour} />
             </React.Fragment>
         )
     } else if (dx < 0) {
         return (
             <React.Fragment>
-                <VLine x={startPoint.x} y0={startPoint.y} y1={(startPoint.y + endPoint.y)/2} />
-                <VLine x={endPoint.x} y1={endPoint.y} y0={(startPoint.y + endPoint.y)/2} />
-                <HLine x1={startPoint.x} x0={endPoint.x} y={(startPoint.y + endPoint.y)/2} />
+                <VLine x={startPoint.x} y0={startPoint.y} y1={(startPoint.y + endPoint.y)/2} colour={colour} />
+                <VLine x={endPoint.x} y1={endPoint.y} y0={(startPoint.y + endPoint.y)/2} colour={colour} />
+                <HLine x1={startPoint.x} x0={endPoint.x} y={(startPoint.y + endPoint.y)/2} colour={colour} />
             </React.Fragment>
         )
     } else {
         return (
             <React.Fragment>
-                <VLine x={startPoint.x} y0={startPoint.y} y1={endPoint.y} />
+                <VLine x={startPoint.x} y0={startPoint.y} y1={endPoint.y} colour={colour} />
             </React.Fragment>
         )
     }
