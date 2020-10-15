@@ -17,10 +17,33 @@ const colours = {
     activity: "paleturquoise"
 }
 
-const TRUNCATE_AT = 20;
+const TRUNCATE_AT = 40;
 
 function truncate(str, n){
     return (str.length > n) ? str.substr(0, n-1) + "…" : str;
+};
+
+function formatTimestamp(timestamp) {
+    let dateObj = new Date(timestamp)
+    return "⏱ " + dateObj.toLocaleString('en-GB', { timeZone: 'UTC' });
+};
+
+function formatType(typeIdentifier) {
+    return typeIdentifier.split(".")[1];
+};
+
+function formatCode(codeRepr) {
+    if (codeRepr) {
+        return "📄 " + codeRepr.split("@")[0];
+    } else {
+        return " ";
+    }
+};
+
+function getFileExtension(url) {
+    const urlObj = new URL(url);
+    const path = urlObj.pathname.split("/");
+    return path[path.length - 1].split(".")[1];
 };
 
 
@@ -43,11 +66,13 @@ function Stage(props) {
         <Card id="stage{props.label}" className={classes.root}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                    {truncate(props.label, TRUNCATE_AT)}
+                    {formatType(props.type)}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {props.timestamp}
-                    {props.attributedTo}
+                    {formatTimestamp(props.timestamp)}<br/>
+                    {props.attributedTo ? "👤 ": ""}{props.attributedTo}<br/>
+                    {formatCode(props.code)}<br/>
+                    ➽ {getFileExtension(props.output.location).toUpperCase()}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>

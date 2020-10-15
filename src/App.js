@@ -76,7 +76,8 @@ function layout(flowchart, config) {
                 attributedTo: item.attributed_to,
                 desciption: item.description,
                 code: item.code,
-                output: item.output
+                output: item.output,
+                uri: item.uri
             });
         if (parent !== null) {
             g.setEdge(parent.label, item.label);

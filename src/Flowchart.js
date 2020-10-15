@@ -20,6 +20,14 @@ export default function FlowChart(props) {
         openDialog(false);
     };
 
+    function getCode(item) {
+        if (item && item.code) {
+            return item.code.name;
+        } else {
+            return "";
+        }
+    }
+
     if (props.graph && !props.loading) {
         return (
             <div>
@@ -30,7 +38,8 @@ export default function FlowChart(props) {
                     return (
                         <div onClick={() => handleDialogOpen(label)} key={"node" + index}>
                             <Stage type={item.type} label={label} x={item.x} y={item.y} size={props.size}
-                                timestamp={item.timestamp} attributedTo={item.attributedTo} />
+                                timestamp={item.timestamp} attributedTo={item.attributedTo}
+                                code={getCode(item)} output={item.output} uri={item.uri} />
                         </div>
                     )
                 })
