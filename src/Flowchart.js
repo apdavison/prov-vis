@@ -3,7 +3,8 @@ import Stage from './Stage';
 import Connector from './Connector';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import StageDetail from './StageDetail'
+import StageDetail from './StageDetail';
+import positions from './positions';
 
 export default function FlowChart(props) {
 
@@ -60,11 +61,15 @@ export default function FlowChart(props) {
         )
     } else if (props.loading) {
         return (
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: positions.searchBarHeight + positions.objectDetailBarHeight + 100 + 'px'}}>
                 <CircularProgress />
             </div>
         )
     } else {
-        return <p>Click in left column to load pipeline</p>
+        return (
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: positions.searchBarHeight + positions.objectDetailBarHeight + 100 + 'px'}}>
+                <p>Click in left column to load pipeline</p>
+            </div>
+        )
     }
 }

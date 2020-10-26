@@ -4,9 +4,14 @@ import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import amber from '@material-ui/core/colors/amber';
 
 import SideBar from './SideBar';
+import SearchBar from './SearchBar';
+import ObjectDetail from './ObjectDetail';
 import FlowChart from './Flowchart';
+import positions from './positions';
 
 import axios from 'axios';
 
@@ -23,7 +28,7 @@ const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
 const JITTER = 20;
 
 const size = {
-    height: 200,
+    height: 250,
     width: 300
 };
 
@@ -107,14 +112,21 @@ function byDate(obj1, obj2) {
 function App(props) {
     const classes = useStyles();
 
+    const theme = createMuiTheme({
+        palette: {
+          primary: amber,
+        },
+      });
+
     const config = {
-        marginx: 240 + 50,  // same as drawerWidth in SideBar.js
-        marginy: 100,
+        marginx: positions.drawerWidth + 50,
+        marginy: positions.menuBarHeight + positions.searchBarHeight + positions.objectDetailBarHeight + 20,
         nodesep: 100,
         ranksep: 50
     };
 
     const [index, setIndex] = useState(0);
+    const [obj, setObj] = useState(null);
     const [pipelines, setPipelines] = useState([]);
     const [graph, setGraph] = useState(null);
     const [loaded, setLoaded] = useState([]);
@@ -127,23 +139,28 @@ function App(props) {
             setPipelines(examplePipelines);
             setLoaded(new Array(examplePipelines.length).fill(true));
         } else {
-            setLoading(true);
-            getPipelines("electrophysiology.MultiChannelMultiTrialRecording",
-                         "542e63ea-e096-415b-9ca7-36e37c4fe332",
-                         props.auth,
-                         0)
-            .then(res => {
-                //console.log(res);
-                setLoading(false);
-                let initialStages = res.data[0].children.slice().sort(byDate);
-                setPipelines(initialStages);
-                setLoaded(new Array(initialStages.length).fill(false));
-            })
-            .catch(err => {
-                console.log('Error: ', err.message);
-            });
+            handleSearchUpdate(
+                "electrophysiology.MultiChannelMultiTrialRecording",
+                "542e63ea-e096-415b-9ca7-36e37c4fe332"
+            )
         }
     }, []);
+
+    function handleSearchUpdate(objType, objId) {
+        console.log(`Searching for ${objType} with ID ${objId}`);
+        setLoading(true);
+        getPipelines(objType, objId, props.auth, 0)
+        .then(res => {
+            setLoading(false);
+            setObj(res.data[0]);
+            let initialStages = res.data[0].children.slice().sort(byDate);
+            setPipelines(initialStages);
+            setLoaded(new Array(initialStages.length).fill(false));
+        })
+        .catch(err => {
+            console.log('Error: ', err.message);
+        });
+    }
 
     function displayPipeline(newIndex) {
         //console.log("Change displayed pipeline " + newIndex);
@@ -180,21 +197,25 @@ function App(props) {
     }
 
     return (
+        <ThemeProvider theme={theme}>
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
-                    Toolbar
+                    EBRAINS: Data analysis pipelines
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <SearchBar onUpdate={handleSearchUpdate} />
+            <ObjectDetail obj={obj} />
             <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
             <FlowChart graph={graph} size={size} jitter={JITTER} loading={loading} />
             </main>
         </div>
+        </ThemeProvider>
     );
 }
 

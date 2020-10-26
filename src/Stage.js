@@ -17,7 +17,7 @@ const colours = {
     activity: "paleturquoise"
 }
 
-const TRUNCATE_AT = 40;
+const TRUNCATE_AT = 20;
 
 function truncate(str, n){
     return (str.length > n) ? str.substr(0, n-1) + "…" : str;
@@ -65,8 +65,11 @@ function Stage(props) {
     return (
         <Card id="stage{props.label}" className={classes.root}>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography variant="overline" gutterBottom>
                     {formatType(props.type)}
+                </Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                    {truncate(props.label, TRUNCATE_AT)}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {formatTimestamp(props.timestamp)}<br/>
