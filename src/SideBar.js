@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TRUNCATE_AT = 20;
+const TRUNCATE_AT = 8;
 
 function truncate(str, n){
     return (str.length > n) ? str.substr(0, n-1) + "…" : str;
@@ -41,10 +41,10 @@ export default function SideBar(props) {
   return (
       <div className={classes.drawer}>
           <Typography variant="overline" className={classes.drawerHeading} gutterBottom>
-            Available Pipelines
+            Available Workflows
           </Typography>
           <List>
-            {props.pipelines.map((obj, index) => (
+            {props.workflows.map((obj, index) => (
               <ListItem button
                     key={index}
                     onClick={()=>props.handleSelect(index)}
@@ -53,8 +53,8 @@ export default function SideBar(props) {
                   <ShareIcon />
                 </ListItemIcon>
                 <ListItemText
-                    primary={truncate(obj.label, TRUNCATE_AT)}
-                    secondary={formatTimestamp(obj.timestamp)}
+                    primary={truncate(obj.id, TRUNCATE_AT)}
+                    secondary={formatTimestamp(obj.stages[0].start_time)}
                     />
               </ListItem>
             ))}

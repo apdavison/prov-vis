@@ -24,7 +24,7 @@ import {
 const USE_EXAMPLE_DATA = false;
 const exampleData = require('./example_data.json');
 const MAX_DEPTH = 10;
-const baseUrl = "https://neural-activity-resource.brainsimulation.eu"
+const baseUrl = "https://prov.brainsimulation.eu"
 const JITTER = 20;
 
 const size = {
@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function getPipelines(startingPointType, startingPointID, auth, max_depth) {
-    let url = baseUrl + "/pipeline/?type_=" + startingPointType + "&id=" + startingPointID + "&direction=downstream&max_depth=" + max_depth;
+function getWorkflows(collabSpace, auth) {
+    let url = baseUrl + "/workflows/?space=" + collabSpace;
     let config = {
         headers: {
             'Authorization': 'Bearer ' + auth.token,
         }
     }
-    console.log("Getting pipeline data from " + url);
+    console.log("Getting workflow executions from " + url);
     return axios.get(url, config)
 };
 
@@ -64,8 +64,28 @@ function extractUUID(uri) {
     return parts[parts.length - 1]
 };
 
+function generateNodeIdentifier(item) {
+    if (item.software_name) {
+        return `${item.software_name} ${item.software_version}`;
+    } else if (item.file_name) {
+        return `${item.location} (checksum ${item.hash.algorithm}:${item.hash.value})`;
+    } else {
+        return item.id;
+    }
+};
 
-function layout(flowchart, config) {
+function determineNodeType(item) {
+    if (item.software_name) {
+        return "software";
+    } else if (item.file_name) {
+        return "file";
+    } else {
+        return "stage";
+    }
+};
+
+
+function layout(workflow, config) {
     var g = new graphlib.Graph();
     // Set an object for the graph label
     g.setGraph(config);
@@ -73,24 +93,30 @@ function layout(flowchart, config) {
     g.setDefaultEdgeLabel(function() { return {}; });
     // Add nodes to the graph.
     function addNode(g, item, parent) {
-        g.setNode(item.label,
+        let itemId = generateNodeIdentifier(item);
+        g.setNode(itemId,
             {
                 width: size.width,
                 height: size.height,
-                type: item.type_,
-                timestamp: item.timestamp,
-                attributedTo: item.attributed_to,
-                desciption: item.description,
-                code: item.code,
-                output: item.output,
-                uri: item.uri
+                nodeType: determineNodeType(item),
+                metadata: item
             });
         if (parent !== null) {
-            g.setEdge(parent.label, item.label);
+            let parentId = generateNodeIdentifier(parent);
+            g.setEdge(parentId, itemId);
         }
-        item.children.forEach(childItem => addNode(g, childItem, item));
     }
-    flowchart.forEach(item => addNode(g, item, null));
+    console.log("Layout of workflow");
+    console.log(workflow);
+    workflow.stages.forEach(stage => {
+        stage.input.forEach(input => {
+            addNode(g, input, null);
+            addNode(g, stage, input);
+        });
+        stage.output.forEach(output => {
+            addNode(g, output, stage);
+        });
+    });
     // Use dagre to perform layout
     dagreLayout(g);
     return g;
@@ -99,10 +125,10 @@ function layout(flowchart, config) {
 
 function byDate(obj1, obj2) {
     // most recent first
-    if (obj1.timestamp < obj2.timestamp) {
+    if (obj1.stages[0].start_time < obj2.stages[0].start_time) {
         return 1;
     }
-    if (obj1.timestamp > obj2.timestamp) {
+    if (obj1.stages[0].start_time > obj2.stages[0].start_time) {
         return -1;
     }
     return 0;
@@ -127,60 +153,57 @@ function App(props) {
 
     const [index, setIndex] = useState(0);
     const [obj, setObj] = useState(null);
-    const [pipelines, setPipelines] = useState([]);
+    const [workflows, setWorkflows] = useState([]);
+    const [collabSpace, setCollabSpace] = useState("collab-poc-workflows");  // myspace
     const [graph, setGraph] = useState(null);
     const [loaded, setLoaded] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        //console.log("Getting pipeline data")
+        //console.log("Getting workflow data")
         if (USE_EXAMPLE_DATA) {
-            let examplePipelines = exampleData[0].children.slice().sort(byDate);
-            setPipelines(examplePipelines);
-            setLoaded(new Array(examplePipelines.length).fill(true));
+            let exampleWorkflows = exampleData[0].children.slice().sort(byDate);
+            setWorkflows(exampleWorkflows);
+            setLoaded(new Array(exampleWorkflows.length).fill(true));
         } else {
-            handleSearchUpdate(
-                "electrophysiology.MultiChannelMultiTrialRecording",
-                "542e63ea-e096-415b-9ca7-36e37c4fe332"
-            )
+            handleSearchUpdate();
         }
     }, []);
 
-    function handleSearchUpdate(objType, objId) {
-        console.log(`Searching for ${objType} with ID ${objId}`);
+    function handleSearchUpdate() {
+        console.log(`Searching for workflows in space ${collabSpace}`);
         setLoading(true);
-        getPipelines(objType, objId, props.auth, 0)
+        getWorkflows(collabSpace, props.auth)
         .then(res => {
             setLoading(false);
+            console.log(res);
             setObj(res.data[0]);
-            let initialStages = res.data[0].children.slice().sort(byDate);
-            setPipelines(initialStages);
-            setLoaded(new Array(initialStages.length).fill(false));
+            let workflows = res.data.slice().sort(byDate);
+            setWorkflows(workflows);
+            setLoaded(new Array(workflows.length).fill(false));
         })
         .catch(err => {
             console.log('Error: ', err.message);
         });
     }
 
-    function displayPipeline(newIndex) {
-        //console.log("Change displayed pipeline " + newIndex);
+    function displayWorkflow(newIndex) {
+        //console.log("Change displayed workflow " + newIndex);
         //console.log(loaded);
         setGraph(null);
-        if (!loaded[newIndex]) {
-            //console.log("Getting pipeline data for #" + newIndex);
-            let startingPoint = pipelines[newIndex];
+        //if (!loaded[newIndex]) {
+        if (false) {
+            //console.log("Getting workflow data for #" + newIndex);
+            let currentWorkflow = workflows[newIndex];
             setLoading(true);
-            getPipelines(startingPoint.type_,
-                         extractUUID(startingPoint.uri),
-                         props.auth,
-                         MAX_DEPTH)
+            getWorkflows(collabSpace, props.auth)
             .then(res => {
-                //console.log(res.data[0]);
+                //console.log(res.data);
                 setLoading(false);
-                let newPipelines = [...pipelines];
-                newPipelines[newIndex] = res.data[0];
-                const g = layout([newPipelines[newIndex]], config);
-                setPipelines(newPipelines);
+                let newWorkflows = [...workflows];
+                newWorkflows[newIndex] = res.data[0];
+                const g = layout([newWorkflows[newIndex]], config);
+                setWorkflows(newWorkflows);
                 setIndex(newIndex);
                 setGraph(g);
             }).catch(err => {
@@ -190,7 +213,7 @@ function App(props) {
             newLoaded[newIndex] = true;
             setLoaded(newLoaded);
         } else {
-            const g = layout([pipelines[newIndex]], config);
+            const g = layout(workflows[newIndex], config);
             setIndex(newIndex);
             setGraph(g);
         }
@@ -203,13 +226,13 @@ function App(props) {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
-                    EBRAINS: Data analysis pipelines
+                    EBRAINS: Workflows
                     </Typography>
                 </Toolbar>
             </AppBar>
             <SearchBar onUpdate={handleSearchUpdate} />
             <ObjectDetail obj={obj} />
-            <SideBar pipelines={pipelines} handleSelect={displayPipeline} selectedIndex={index} />
+            <SideBar workflows={workflows} handleSelect={displayWorkflow} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
             <FlowChart graph={graph} size={size} jitter={JITTER} loading={loading} />

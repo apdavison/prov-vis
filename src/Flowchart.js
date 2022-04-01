@@ -1,5 +1,6 @@
 import React from 'react';
 import Stage from './Stage';
+import File from './File';
 import Connector from './Connector';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -36,13 +37,23 @@ export default function FlowChart(props) {
                 props.graph.nodes().map((label, index) => {
                     let item = props.graph.node(label);
                     item["label"] = label;
-                    return (
-                        <div onClick={() => handleDialogOpen(label)} key={"node" + index}>
-                            <Stage type={item.type} label={label} x={item.x} y={item.y} size={props.size}
-                                timestamp={item.timestamp} attributedTo={item.attributedTo}
-                                code={getCode(item)} output={item.output} uri={item.uri} />
-                        </div>
-                    )
+                    if (item.nodeType === "stage") {
+                        return (
+                            <div onClick={() => handleDialogOpen(label)} key={"node" + index}>
+                                <Stage label={label} x={item.x} y={item.y} size={props.size}
+                                    metadata={item.metadata} />
+                            </div>
+                        )
+                    } else if (item.nodeType === "file") {
+                        return (
+                            <div onClick={() => handleDialogOpen(label)} key={"node" + index}>
+                                <File label={label} x={item.x} y={item.y} size={props.size}
+                                    metadata={item.metadata} />
+                            </div>
+                        )
+                    } else {
+                        console.log(`TODO: Not yet able to show ${item.nodeType} objects`);
+                    }
                 })
             }
             {
@@ -68,7 +79,7 @@ export default function FlowChart(props) {
     } else {
         return (
             <div style={{display: 'flex', justifyContent: 'center', marginTop: positions.searchBarHeight + positions.objectDetailBarHeight + 100 + 'px'}}>
-                <p>Click in left column to load pipeline</p>
+                <p>Click in left column to load workflow</p>
             </div>
         )
     }
