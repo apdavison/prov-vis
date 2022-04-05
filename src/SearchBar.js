@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -10,6 +12,8 @@ import Select from '@material-ui/core/Select';
 
 import positions from './positions';
 
+const baseUrl = "https://prov.brainsimulation.eu"
+const DEFAULT_COLLAB_SPACE = "collab-poc-workflows";  // todo: change to "myspace"
 
 const useStyles = makeStyles((theme) => ({
   searchBar: {
@@ -27,36 +31,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SideBar(props) {
+
+function getSpaces(auth) {
+  const url = baseUrl + "/statistics/spaces/";
+  const config = {
+      headers: {
+          'Authorization': 'Bearer ' + auth.token,
+      }
+  }
+  console.log("Getting spaces from " + url);
+  return axios.get(url, config)
+};
+
+
+export default function SearchBar(props) {
   const classes = useStyles();
-  const [objectType, setObjectType] = React.useState('');
-  const [objectId, setObjectId] = React.useState('');
+  const [availableCollabSpaces, setAvailableCollabSpaces] = useState([DEFAULT_COLLAB_SPACE]);
+  const [selectedCollabSpace, setSelectedCollabSpace] = useState(DEFAULT_COLLAB_SPACE);
+  const [recipeId, setRecipeId] = useState(null);
+
+  useEffect(() => {
+        getSpaces(props.auth)
+        .then(res => {
+          setAvailableCollabSpaces(
+            res.data.map(item => {
+              return item.space;
+            })
+          );
+       })
+  }, []);
 
   function updateSearch() {
-    props.onUpdate(objectType, objectId);
+    let searchFilters = {};
+    if (recipeId) {
+      searchFilters["recipe_id"] = recipeId;
+    }
+    props.onUpdate(selectedCollabSpace, searchFilters);
   }
 
   return (
       <div className={classes.searchBar}>
           <form>
             <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="object-type-label">Object class</InputLabel>
+                <InputLabel id="collab-space-label">Collab space</InputLabel>
                 <Select
-                    labelId="object-type-label"
-                    id="object-type-select"
-                    value={objectType}
-                    onChange={ev => setObjectType(ev.target.value)}
+                    labelId="collab-space-label"
+                    id="collab-space-select"
+                    value={selectedCollabSpace}
+                    onChange={ev => setSelectedCollabSpace(ev.target.value)}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="electrophysiology.MultiChannelMultiTrialRecording">Multi-channel, multi-trial recording</MenuItem>
-                    <MenuItem value="analysis.AnalysisResult">Analysis Result</MenuItem>
+                    {
+                      availableCollabSpaces.map(name => {
+                        return <MenuItem value={name} key={name}>{name}</MenuItem>
+                      })
+                    }
                 </Select>
             </FormControl>
 
-            <TextField id="object-id" label="Object ID" variant="outlined"
-                       value={objectId} onChange={ev => setObjectId(ev.target.value)}
+            <TextField id="recipe-id" label="Workflow recipe ID" variant="outlined"
+                       value={recipeId} onChange={ev => setRecipeId(ev.target.value)}
                        className={classes.formControl} />
 
             <Button variant="contained" color="primary"

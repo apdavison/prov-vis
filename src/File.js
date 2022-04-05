@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 //import CardActionArea from '@material-ui/core/CardActionArea';
@@ -8,10 +9,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined';
 import Chip from '@material-ui/core/Chip';
 //import Stack from '@material-ui/core/Stack';
+import Preview from './Preview';
+
+
 
 const colours = {
     entity: "moccasin",
@@ -50,12 +54,26 @@ function formatFileSize(numBytes) {
 
 }
 
+
 function ViewButton(props) {
+    if (props.location.startsWith("https://") && props.format) {
+        if (props.format.startsWith("image") || props.format.startsWith("text")) {
+            return (
+                <IconButton aria-label="preview" onClick={props.onClick}>
+                    <VisibilityIcon />
+                </IconButton>
+            )
+        }
+    }
+    return "";
+}
+
+function DownloadButton(props) {
     if (props.href.startsWith("https://")) {
         return (
-            <Button variant="contained" href={props.href} target="_blank">
-                View
-            </Button>
+            <IconButton aria-label="download" href={props.href} target="_blank">
+                <CloudDownloadOutlinedIcon />
+            </IconButton>
         )
     } else {
         return (
@@ -79,10 +97,20 @@ function File(props) {
             backgroundColor: colours[props.type],
             position: "absolute"
         }
-      });
+    });
+    const [openPreview, setOpenPreview] = React.useState(false);
     const classes = useStyles();
 
+    function handleClosePreview() {
+        setOpenPreview(false);
+    }
+
+    function handleOpenPreview() {
+        setOpenPreview(true);
+    }
+
     return (
+        <React.Fragment>
         <Card id="stage{props.label}" className={classes.root}>
             <CardContent>
                 <Typography variant="overline" gutterBottom>
@@ -99,15 +127,16 @@ function File(props) {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <ViewButton href={props.metadata.location} />
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
+                <DownloadButton href={props.metadata.location} />
+                <ViewButton location={props.metadata.location} format={props.metadata.format} onClick={handleOpenPreview} />
             </CardActions>
         </Card>
+        <Preview open={openPreview} 
+                 onClose={handleClosePreview} 
+                 format={props.metadata.format} 
+                 fileName={props.metadata.file_name} 
+                 location={props.metadata.location} />
+        </React.Fragment>
     )
 }
 

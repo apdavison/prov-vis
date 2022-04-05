@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: positions.drawerWidth + 'px',
     position: 'absolute',
     left: '0px',
-    top: positions.menuBarHeight + positions.searchBarHeight + positions.objectDetailBarHeight + 'px',
+    top: positions.menuBarHeight + positions.searchBarHeight + 'px',
     overflow: 'auto',
     paddingTop: '1ex'
   },
@@ -38,27 +38,37 @@ function formatTimestamp(timestamp) {
 export default function SideBar(props) {
   const classes = useStyles();
 
-  return (
+  if (props.workflows.length > 0) {
+    return (
+        <div className={classes.drawer}>
+            <Typography variant="overline" className={classes.drawerHeading} gutterBottom>
+              Available Workflows
+            </Typography>
+            <List>
+              {props.workflows.map((obj, index) => (
+                <ListItem button
+                      key={index}
+                      onClick={()=>props.handleSelect(index)}
+                      selected={props.selectedIndex === index}>
+                  <ListItemIcon>
+                    <ShareIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                      primary={truncate(obj.id, TRUNCATE_AT)}
+                      secondary={formatTimestamp(obj.stages[0].start_time)}
+                      />
+                </ListItem>
+              ))}
+            </List>
+        </div>
+    );
+  } else {
+    return (
       <div className={classes.drawer}>
           <Typography variant="overline" className={classes.drawerHeading} gutterBottom>
-            Available Workflows
+            No Workflows Available
           </Typography>
-          <List>
-            {props.workflows.map((obj, index) => (
-              <ListItem button
-                    key={index}
-                    onClick={()=>props.handleSelect(index)}
-                    selected={props.selectedIndex === index}>
-                <ListItemIcon>
-                  <ShareIcon />
-                </ListItemIcon>
-                <ListItemText
-                    primary={truncate(obj.id, TRUNCATE_AT)}
-                    secondary={formatTimestamp(obj.stages[0].start_time)}
-                    />
-              </ListItem>
-            ))}
-          </List>
       </div>
-  );
+    )
+  }
 }

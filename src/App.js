@@ -9,7 +9,7 @@ import amber from '@material-ui/core/colors/amber';
 
 import SideBar from './SideBar';
 import SearchBar from './SearchBar';
-import ObjectDetail from './ObjectDetail';
+import RecipeDetail from './RecipeDetail';
 import FlowChart from './Flowchart';
 import positions from './positions';
 
@@ -26,6 +26,7 @@ const exampleData = require('./example_data.json');
 const MAX_DEPTH = 10;
 const baseUrl = "https://prov.brainsimulation.eu"
 const JITTER = 20;
+const DEFAULT_COLLAB_SPACE = "collab-poc-workflows";  // todo: change to "myspace"
 
 const size = {
     height: 250,
@@ -46,8 +47,12 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function getWorkflows(collabSpace, auth) {
+function getWorkflows(collabSpace, searchFilters, auth) {
     let url = baseUrl + "/workflows/?space=" + collabSpace;
+    if (searchFilters) {
+        const query_params = new URLSearchParams(searchFilters).toString();
+        url += "&" + query_params;
+    }
     let config = {
         headers: {
             'Authorization': 'Bearer ' + auth.token,
@@ -57,6 +62,16 @@ function getWorkflows(collabSpace, auth) {
     return axios.get(url, config)
 };
 
+function getRecipe(recipeId, auth) {
+    let url = baseUrl + "/recipes/" + recipeId;
+    let config = {
+        headers: {
+            'Authorization': 'Bearer ' + auth.token,
+        }
+    }
+    console.log("Getting workflow recipe from " + url);
+    return axios.get(url, config)
+};
 
 function extractUUID(uri) {
     // could do something fancier with regex, but for now do something simple
@@ -152,9 +167,10 @@ function App(props) {
     };
 
     const [index, setIndex] = useState(0);
-    const [obj, setObj] = useState(null);
+    const [collabSpace, setCollabSpace] = useState(DEFAULT_COLLAB_SPACE);
+    const [searchFilters, setSearchFilters] = useState({});
     const [workflows, setWorkflows] = useState([]);
-    const [collabSpace, setCollabSpace] = useState("collab-poc-workflows");  // myspace
+    const [recipe, setRecipe] = useState(null);
     const [graph, setGraph] = useState(null);
     const [loaded, setLoaded] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -166,18 +182,20 @@ function App(props) {
             setWorkflows(exampleWorkflows);
             setLoaded(new Array(exampleWorkflows.length).fill(true));
         } else {
-            handleSearchUpdate();
+            handleSearchUpdate(collabSpace);
         }
     }, []);
 
-    function handleSearchUpdate() {
+    function handleSearchUpdate(searchCollabSpace, searchFilters) {
+        setCollabSpace(searchCollabSpace);
+        setSearchFilters(searchFilters);
         console.log(`Searching for workflows in space ${collabSpace}`);
+
         setLoading(true);
-        getWorkflows(collabSpace, props.auth)
+        getWorkflows(searchCollabSpace, searchFilters, props.auth)
         .then(res => {
             setLoading(false);
             console.log(res);
-            setObj(res.data[0]);
             let workflows = res.data.slice().sort(byDate);
             setWorkflows(workflows);
             setLoaded(new Array(workflows.length).fill(false));
@@ -196,7 +214,7 @@ function App(props) {
             //console.log("Getting workflow data for #" + newIndex);
             let currentWorkflow = workflows[newIndex];
             setLoading(true);
-            getWorkflows(collabSpace, props.auth)
+            getWorkflows(collabSpace, searchFilters, props.auth)
             .then(res => {
                 //console.log(res.data);
                 setLoading(false);
@@ -213,6 +231,10 @@ function App(props) {
             newLoaded[newIndex] = true;
             setLoaded(newLoaded);
         } else {
+            getRecipe(workflows[newIndex].recipe_id, props.auth).
+            then(res => {
+                setRecipe(res.data);
+            });
             const g = layout(workflows[newIndex], config);
             setIndex(newIndex);
             setGraph(g);
@@ -230,11 +252,11 @@ function App(props) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SearchBar onUpdate={handleSearchUpdate} />
-            <ObjectDetail obj={obj} />
+            <SearchBar onUpdate={handleSearchUpdate} auth={props.auth} />
             <SideBar workflows={workflows} handleSelect={displayWorkflow} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
+            <RecipeDetail recipe={recipe} />
             <FlowChart graph={graph} size={size} jitter={JITTER} loading={loading} />
             </main>
         </div>
