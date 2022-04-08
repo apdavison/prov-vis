@@ -9,7 +9,7 @@ import amber from '@material-ui/core/colors/amber';
 
 import SideBar from './SideBar';
 import SearchBar from './SearchBar';
-import RecipeDetail from './RecipeDetail';
+import RecipeOverview from './RecipeOverview';
 import FlowChart from './Flowchart';
 import positions from './positions';
 
@@ -264,7 +264,7 @@ function App(props) {
             <SideBar workflows={workflows} handleSelect={displayWorkflow} selectedIndex={index} />
             <main className={classes.content}>
             <Toolbar />
-            <RecipeDetail recipe={recipe} />
+            <RecipeOverview recipe={recipe} />
             <FlowChart graph={graph} size={size} jitter={JITTER} loading={loading} />
             </main>
         </div>
