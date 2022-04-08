@@ -1,0 +1,20 @@
+
+stages:
+  - build
+
+build_integration:
+  stage: build
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == "main"
+  script:
+    - export  # debugging environment variables
+    - cd apps
+    - docker build -f deployment/Dockerfile -t docker-registry.ebrains.eu/prov-vis/prov-vis-app:latest .
+    - echo $DOCKER_REGISTRY_USER
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_SECRET docker-registry.ebrains.eu
+    - docker push docker-registry.ebrains.eu/prov-vis/prov-vis-app:latest
+  tags:
+    - shell-runner
+
+
