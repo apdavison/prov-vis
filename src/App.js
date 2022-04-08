@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import amber from '@material-ui/core/colors/amber';
+import green from '@material-ui/core/colors/green';
 
 import SideBar from './SideBar';
 import SearchBar from './SearchBar';
@@ -163,7 +163,7 @@ function App(props) {
 
     const theme = createMuiTheme({
         palette: {
-          primary: amber,
+          primary: green,
         },
       });
 
