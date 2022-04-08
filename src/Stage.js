@@ -66,8 +66,8 @@ function Stage(props) {
         }
       });
     const classes = useStyles();
-    console.log("Stage");
-    console.log(props);
+    //console.log("Stage");
+    //console.log(props);
     return (
         <Card id="stage{props.label}" className={classes.root}>
             <CardContent>
