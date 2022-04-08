@@ -44,11 +44,24 @@ function getSpaces(auth) {
 };
 
 
+function getRecipes(collabSpace, auth) {
+  const url = baseUrl + "/recipes/?space=" + collabSpace;
+  const config = {
+    headers: {
+        'Authorization': 'Bearer ' + auth.token,
+    }
+  }
+  console.log("Getting recipes from " + url);
+  return axios.get(url, config)
+}
+
+
 export default function SearchBar(props) {
   const classes = useStyles();
   const [availableCollabSpaces, setAvailableCollabSpaces] = useState([DEFAULT_COLLAB_SPACE]);
   const [selectedCollabSpace, setSelectedCollabSpace] = useState(DEFAULT_COLLAB_SPACE);
-  const [recipeId, setRecipeId] = useState(null);
+  const [availableRecipes, setAvailableRecipes] = useState([""]);
+  const [recipeId, setRecipeId] = useState("");
 
   useEffect(() => {
         getSpaces(props.auth)
@@ -58,8 +71,18 @@ export default function SearchBar(props) {
               return item.space;
             })
           );
+          handleCollabChange(DEFAULT_COLLAB_SPACE);
        })
   }, []);
+
+  function handleCollabChange(collabSpace) {
+    setSelectedCollabSpace(collabSpace);
+    getRecipes(collabSpace, props.auth)
+    .then(res => {
+      console.log(res.data);
+      setAvailableRecipes(res.data);
+    })
+  }
 
   function updateSearch() {
     let searchFilters = {};
@@ -78,7 +101,7 @@ export default function SearchBar(props) {
                     labelId="collab-space-label"
                     id="collab-space-select"
                     value={selectedCollabSpace}
-                    onChange={ev => setSelectedCollabSpace(ev.target.value)}
+                    onChange={ev => handleCollabChange(ev.target.value)}
                 >
                     {
                       availableCollabSpaces.map(name => {
@@ -87,10 +110,23 @@ export default function SearchBar(props) {
                     }
                 </Select>
             </FormControl>
-
-            <TextField id="recipe-id" label="Workflow recipe ID" variant="outlined"
-                       value={recipeId} onChange={ev => setRecipeId(ev.target.value)}
-                       className={classes.formControl} />
+    
+            <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="recipe-label">Workflow recipes</InputLabel>
+                <Select
+                    labelId="recipe-label"
+                    id="recipe-select"
+                    value={recipeId}
+                    onChange={ev => setRecipeId(ev.target.value)}
+                >
+                    <MenuItem value="" key="000">&nbsp;</MenuItem>
+                    {
+                      availableRecipes.map(recipe => {
+                        return <MenuItem value={recipe.id} key={recipe.id}>{recipe.name}</MenuItem>
+                      })
+                    }
+                </Select>
+            </FormControl>
 
             <Button variant="contained" color="primary"
                     onClick={updateSearch}
