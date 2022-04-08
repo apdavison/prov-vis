@@ -22,10 +22,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function formatType(typeIdentifier) {
-  return typeIdentifier.split(".")[1];
-};
-
 function formatPeople(people) {
   if (people) {
     let repr = "👤 ";

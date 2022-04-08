@@ -22,14 +22,6 @@ export default function FlowChart(props) {
         openDialog(false);
     };
 
-    function getCode(item) {
-        if (item && item.code) {
-            return item.code.name;
-        } else {
-            return "";
-        }
-    }
-
     if (props.graph && !props.loading) {
         return (
             <div>
@@ -53,6 +45,7 @@ export default function FlowChart(props) {
                         )
                     } else {
                         console.log(`TODO: Not yet able to show ${item.nodeType} objects`);
+                        return null;
                     }
                 })
             }

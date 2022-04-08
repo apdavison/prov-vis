@@ -73,12 +73,6 @@ function getRecipe(recipeId, auth) {
     return axios.get(url, config)
 };
 
-function extractUUID(uri) {
-    // could do something fancier with regex, but for now do something simple
-    const parts =  uri.split("/");
-    return parts[parts.length - 1]
-};
-
 function generateNodeIdentifier(item) {
     if (item.software_name) {
         return `${item.software_name} ${item.software_version}`;
@@ -220,7 +214,6 @@ function App(props) {
         //if (!loaded[newIndex]) {
         if (false) {
             //console.log("Getting workflow data for #" + newIndex);
-            let currentWorkflow = workflows[newIndex];
             setLoading(true);
             getWorkflows(collabSpace, searchFilters, props.auth)
             .then(res => {
@@ -239,8 +232,8 @@ function App(props) {
             newLoaded[newIndex] = true;
             setLoaded(newLoaded);
         } else {
-            getRecipe(workflows[newIndex].recipe_id, props.auth).
-            then(res => {
+            getRecipe(workflows[newIndex].recipe_id, props.auth)
+            .then(res => {
                 setRecipe(res.data);
             });
             const g = layout(workflows[newIndex], config);

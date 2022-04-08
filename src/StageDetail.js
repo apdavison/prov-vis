@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 
@@ -68,9 +67,12 @@ export default function StageDetail(props) {
                         <p>Programming language: {props.item.code.format}</p>
                         <p>Licence: {props.item.code.license}</p>
                         <Typography variant="h6">Output</Typography>
-                        <p>📄 {getFileExtension(props.item.output.location).toUpperCase()} <a href={props.item.output.location} target="_blank">
-                            {props.item.output.description}
-                        </a></p>
+                        <p><span role="img" aria-label="link-to-output-file">📄</span>
+                           {getFileExtension(props.item.output.location).toUpperCase()} 
+                           <a href={props.item.output.location} target="_blank" rel="noopener noreferrer">
+                           {props.item.output.description}
+                           </a>
+                        </p>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">
