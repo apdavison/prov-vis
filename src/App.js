@@ -83,7 +83,11 @@ function generateNodeIdentifier(item) {
     if (item.software_name) {
         return `${item.software_name} ${item.software_version}`;
     } else if (item.file_name) {
-        return `${item.location} (checksum ${item.hash.algorithm}:${item.hash.value})`;
+        if (item.location && item.hash) { 
+            return `${item.location} (checksum ${item.hash.algorithm}:${item.hash.value})`;
+        } else {
+            return item.file_name;
+        }
     } else {
         return item.id;
     }
@@ -119,7 +123,11 @@ function layout(workflow, config) {
         if (parent !== null) {
             let parentId = generateNodeIdentifier(parent);
             g.setEdge(parentId, itemId);
+            //console.log(`Adding node with id ${itemId}, parent=${parentId}`);
+        } else {
+            //console.log(`Adding node with id ${itemId}, no parent`);
         }
+        
     }
     console.log("Layout of workflow");
     console.log(workflow);

@@ -121,7 +121,7 @@ function File(props) {
                 </Typography>
                 <Chip label={props.metadata.format} size="small" />
                 <Chip label={formatFileSize(props.metadata.size)} size="small" />
-                <Chip label={`${props.metadata.hash.algorithm}:${truncate(props.metadata.hash.value, 8)}`} size="small" />
+                <Chip label={props.metadata.hash ? `${props.metadata.hash.algorithm}:${truncate(props.metadata.hash.value, 8)}` : ""} size="small" />
                 <Typography variant="body2" color="textSecondary" component="p">
                     {props.metadata.description}
                 </Typography>
