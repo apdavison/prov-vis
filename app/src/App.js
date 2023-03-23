@@ -77,7 +77,7 @@ function generateNodeIdentifier(item) {
     if (item.software_name) {
         return `${item.software_name} ${item.software_version}`;
     } else if (item.file_name) {
-        if (item.location && item.hash) { 
+        if (item.location && item.hash) {
             return `${item.location} (checksum ${item.hash.algorithm}:${item.hash.value})`;
         } else {
             return item.file_name;
@@ -121,7 +121,7 @@ function layout(workflow, config) {
         } else {
             //console.log(`Adding node with id ${itemId}, no parent`);
         }
-        
+
     }
     console.log("Layout of workflow");
     console.log(workflow);
@@ -194,7 +194,8 @@ function App(props) {
         console.log(`Searching for workflows in space ${collabSpace}`);
 
         setLoading(true);
-        getWorkflows(searchCollabSpace, searchFilters, props.auth)
+        //getWorkflows(searchCollabSpace, searchFilters, props.auth)
+        getWorkflows(null, searchFilters, props.auth)
         .then(res => {
             setLoading(false);
             console.log(res);
