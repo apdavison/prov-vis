@@ -48,10 +48,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getWorkflows(collabSpace, searchFilters, auth) {
-    let url = baseUrl + "/workflows/?space=" + collabSpace;
+
+    let url = baseUrl + "/workflows/"
+    if (collabSpace) {
+        searchFilters.space = collabSpace;
+    }
     if (searchFilters) {
         const query_params = new URLSearchParams(searchFilters).toString();
-        url += "&" + query_params;
+        url += "?" + query_params;
     }
     let config = {
         headers: {
