@@ -8,7 +8,7 @@ WORKDIR /prov-vis-app
 ENV PATH /prov-vis-app/node_modules/.bin:$PATH
 COPY app/package.json ./
 COPY app/package-lock.json ./
-RUN npm ci --silent
+RUN npm ci
 COPY app ./
 RUN npm run build
 
