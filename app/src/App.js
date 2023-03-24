@@ -130,6 +130,7 @@ function layout(workflow, config) {
     console.log("Layout of workflow");
     console.log(workflow);
     workflow.stages.forEach(stage => {
+        addNode(g, stage, null);
         stage.input.forEach(input => {
             addNode(g, input, null);
             addNode(g, stage, input);
