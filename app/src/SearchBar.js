@@ -10,8 +10,8 @@ import Select from '@material-ui/core/Select';
 
 import positions from './positions';
 
-const baseUrl = "https://prov.brainsimulation.eu"
-const DEFAULT_COLLAB_SPACE = "collab-poc-workflows";  // todo: change to "myspace"
+const baseUrl = "https://prov.brainsimulation.eu";
+const DEFAULT_COLLAB_SPACE = "computation";
 
 const useStyles = makeStyles((theme) => ({
   searchBar: {

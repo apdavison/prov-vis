@@ -26,7 +26,7 @@ const exampleData = require('./example_data.json');
 const MAX_DEPTH = 10;
 const baseUrl = "https://prov.brainsimulation.eu"
 const JITTER = 20;
-const DEFAULT_COLLAB_SPACE = "collab-poc-workflows";  // todo: change to "myspace"
+const DEFAULT_COLLAB_SPACE = "computation";
 
 const size = {
     height: 250,
@@ -96,8 +96,10 @@ function determineNodeType(item) {
         return "software";
     } else if (item.file_name) {
         return "file";
-    } else {
+    } else if (item.start_time) {
         return "stage";
+    } else {
+        return "unknown";
     }
 };
 
@@ -111,19 +113,20 @@ function layout(workflow, config) {
     // Add nodes to the graph.
     function addNode(g, item, parent) {
         let itemId = generateNodeIdentifier(item);
+        let nodeType = determineNodeType(item);
         g.setNode(itemId,
             {
                 width: size.width,
                 height: size.height,
-                nodeType: determineNodeType(item),
+                nodeType: nodeType,
                 metadata: item
             });
         if (parent !== null) {
             let parentId = generateNodeIdentifier(parent);
             g.setEdge(parentId, itemId);
-            //console.log(`Adding node with id ${itemId}, parent=${parentId}`);
+            //console.log(`Adding node with id ${itemId} and type ${nodeType}, parent=${parentId}`);
         } else {
-            //console.log(`Adding node with id ${itemId}, no parent`);
+            //console.log(`Adding node with id ${itemId} and type ${nodeType}, no parent`);
         }
 
     }
