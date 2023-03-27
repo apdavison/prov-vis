@@ -1,19 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-//import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-//import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined';
-import Chip from '@material-ui/core/Chip';
-//import Stack from '@material-ui/core/Stack';
+import {
+    Card, CardActions, CardContent, Button, Typography, IconButton, Chip }
+    from "@mui/material";
+import { Visibility, CloudDownloadOutlined } from "@mui/icons-material";
 import Preview from './Preview';
-
 
 
 const colours = {
@@ -21,7 +11,7 @@ const colours = {
     activity: "paleturquoise"
 }
 
-const TRUNCATE_AT = 20;
+const TRUNCATE_AT = 25;
 
 function truncate(str, n){
     return (str.length > n) ? str.substr(0, n-1) + "…" : str;
@@ -59,7 +49,7 @@ function ViewButton(props) {
         if (props.format.startsWith("image") || props.format.startsWith("text")) {
             return (
                 <IconButton aria-label="preview" onClick={props.onClick}>
-                    <VisibilityIcon />
+                    <Visibility />
                 </IconButton>
             )
         }
@@ -71,7 +61,7 @@ function DownloadButton(props) {
     if (props.href.startsWith("https://")) {
         return (
             <IconButton aria-label="download" href={props.href} target="_blank">
-                <CloudDownloadOutlinedIcon />
+                <CloudDownloadOutlined />
             </IconButton>
         )
     } else {
@@ -87,18 +77,15 @@ function DownloadButton(props) {
 function File(props) {
     const width = props.size.width;
     const height = props.size.height;
-    const useStyles = makeStyles({
-        root: {
+    const styles = {
             top: props.y - height/2 + "px",
             left: props.x - width/2 + "px",
             width: width + "px",
             height: height + "px",
             backgroundColor: colours[props.type],
             position: "absolute"
-        }
-    });
+    };
     const [openPreview, setOpenPreview] = React.useState(false);
-    const classes = useStyles();
 
     function handleClosePreview() {
         setOpenPreview(false);
@@ -110,12 +97,12 @@ function File(props) {
 
     return (
         <React.Fragment>
-        <Card id="stage{props.label}" className={classes.root}>
+        <Card id="stage{props.label}" sx={styles}>
             <CardContent>
                 <Typography variant="overline" gutterBottom>
                     file
                 </Typography>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="body" component="h3">
                     {truncate(props.metadata.file_name, TRUNCATE_AT)}
                 </Typography>
                 <Chip label={props.metadata.format} size="small" />
@@ -130,10 +117,10 @@ function File(props) {
                 <ViewButton location={props.metadata.location} format={props.metadata.format} onClick={handleOpenPreview} />
             </CardActions>
         </Card>
-        <Preview open={openPreview} 
-                 onClose={handleClosePreview} 
-                 format={props.metadata.format} 
-                 fileName={props.metadata.file_name} 
+        <Preview open={openPreview}
+                 onClose={handleClosePreview}
+                 format={props.metadata.format}
+                 fileName={props.metadata.file_name}
                  location={props.metadata.location} />
         </React.Fragment>
     )

@@ -1,0 +1,2689 @@
+[
+  {
+    "id": "63707147-8422-4872-b3a5-dbcf32bd61ec",
+    "configuration": {
+      "folder_root": "result",
+      "synch_root": "synch",
+      "bvals": [
+        0,
+        60
+      ],
+      "output_dir_name": "output",
+      "run_sim": 5000,
+      "cut_transient": 1000,
+      "simname": [
+        "b=0",
+        "b=60"
+      ],
+      "token": "<MASKED SECRET>",
+      "bucket_id": "provenance-api-development"
+    },
+    "stages": [
+      {
+        "id": "844b8ec6-33cf-491b-852e-6b5d20adffe9",
+        "input": [],
+        "output": [
+          {
+            "description": "sim_results",
+            "format": "application/json",
+            "hash": {
+              "value": "114f7e8c63e02c21e65127e4e06909b981a213bc",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://parameter.json",
+            "file_name": "parameter.json",
+            "size": 1902
+          },
+          {
+            "description": "sim_results",
+            "format": "application/json",
+            "hash": {
+              "value": "119a3f34ecf99f6e900a34cf35e0418c321bc0dd",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/parameter.json",
+            "file_name": "result_b_0/parameter.json",
+            "size": 4574
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "8dc40ff61ac9dd500d354f0b33162ef05eaec624",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_0.npy",
+            "file_name": "result_b_0/step_0.npy",
+            "size": 328389664
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "7aba1bcf684f6d419c15ae145de4bddb661cb8bf",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_1.npy",
+            "file_name": "result_b_0/step_1.npy",
+            "size": 328389664
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "8d671ff79fa018a267c2893b30cc2cffb9ba0277",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_2.npy",
+            "file_name": "result_b_0/step_2.npy",
+            "size": 328389664
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "d61eea50c531b771b58a2b0f285ca4ad3a23afec",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_3.npy",
+            "file_name": "result_b_0/step_3.npy",
+            "size": 328389664
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "09bf94a56480e2db689cb3b92da49b990bcb7aff",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_4.npy",
+            "file_name": "result_b_0/step_4.npy",
+            "size": 328389664
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "097b7fb89d668429a026c2aa1b45b930a31f830d",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_0/step_5.npy",
+            "file_name": "result_b_0/step_5.npy",
+            "size": 128
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "657611798cf10dbaf8fcf9845b17d1ca9d60e25b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://step_init.npy",
+            "file_name": "step_init.npy",
+            "size": 1622144
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": "application/json",
+            "hash": {
+              "value": "2b673d45f38971d2dd83f6bf6ad7b19b0e42306c",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/parameter.json",
+            "file_name": "result_b_60/parameter.json",
+            "size": 4576
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "b8d8587d802efe13f0c594775a9d744ae9269284",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_0.npy",
+            "file_name": "result_b_60/step_0.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "1c4a9ae0b80e6c7a34591d3670741af66dd65c58",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_1.npy",
+            "file_name": "result_b_60/step_1.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "20e6f8c058d8e62cbbb0b4868989ded6cc4da17b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_2.npy",
+            "file_name": "result_b_60/step_2.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "5e9d993df94f457d81f3882aee3c5ee50504a954",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_3.npy",
+            "file_name": "result_b_60/step_3.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "6cb450c9398830e22da00fac43046fec342d0511",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_4.npy",
+            "file_name": "result_b_60/step_4.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "097b7fb89d668429a026c2aa1b45b930a31f830d",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_5.npy",
+            "file_name": "result_b_60/step_5.npy",
+            "size": 128
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "657611798cf10dbaf8fcf9845b17d1ca9d60e25b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_init.npy",
+            "file_name": "result_b_60/step_init.npy",
+            "size": 1622144
+          },
+          {
+            "description": "sim_results",
+            "format": null,
+            "hash": {
+              "value": "657611798cf10dbaf8fcf9845b17d1ca9d60e25b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://step_init.npy",
+            "file_name": "step_init.npy",
+            "size": 1622144
+          }
+        ],
+        "environment": {
+          "id": "d37c4e86-a4cc-48e8-bff2-5811a9cbae85",
+          "name": "docker-registry.ebrains.eu/sc3/run_simulation:latest",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.4.0-77-generic",
+            "OperatingSystem": "Ubuntu 20.04.2 LTS",
+            "OSType": "linux",
+            "Architecture": "x86_64",
+            "NCPU": 4,
+            "MemTotal": 16791523328
+          },
+          "software": [
+            {
+              "id": "962b9af3-dfcd-47ca-8950-b5d8794bc016",
+              "software_name": "Python",
+              "software_version": "3.8.15"
+            },
+            {
+              "id": "29260d20-dc18-4779-83ba-3022295b6ebb",
+              "software_name": "asttokens",
+              "software_version": "2.2.0"
+            },
+            {
+              "id": "01442b2d-4a13-4857-bfb2-ff6730bd459f",
+              "software_name": "autopep8",
+              "software_version": "2.0.0"
+            },
+            {
+              "id": "43a03262-9e2c-4170-8be3-22325044e998",
+              "software_name": "backcall",
+              "software_version": "0.2.0"
+            },
+            {
+              "id": "fc866cd1-5205-40d6-ab35-2eacbe590c9e",
+              "software_name": "certifi",
+              "software_version": "2022.9.24"
+            },
+            {
+              "id": "a27decd8-c4a1-42a0-95bc-854304b8af9b",
+              "software_name": "charset-normalizer",
+              "software_version": "2.1.1"
+            },
+            {
+              "id": "858cc6d7-dcf1-4974-8973-11212fdb2d39",
+              "software_name": "contourpy",
+              "software_version": "1.0.6"
+            },
+            {
+              "id": "fa47b5d5-36af-426a-90bd-85d81d165b2a",
+              "software_name": "cycler",
+              "software_version": "0.11.0"
+            },
+            {
+              "id": "67746d39-1cc6-4de1-a27f-1bbe8fd284ad",
+              "software_name": "debugpy",
+              "software_version": "1.6.4"
+            },
+            {
+              "id": "60b4eade-26b3-4c30-932a-d7e632a845aa",
+              "software_name": "decorator",
+              "software_version": "4.4.2"
+            },
+            {
+              "id": "f0993ad6-b7c0-4edd-93eb-ad6f435ec7a7",
+              "software_name": "Deprecated",
+              "software_version": "1.2.13"
+            },
+            {
+              "id": "6f61bf27-3994-4f5e-8f95-c42282f8726f",
+              "software_name": "entrypoints",
+              "software_version": "0.4"
+            },
+            {
+              "id": "df807dad-9e28-4781-9b71-ca9dda5e428e",
+              "software_name": "executing",
+              "software_version": "1.2.0"
+            },
+            {
+              "id": "fc467f94-4f20-4d82-8df5-24f67bb46f67",
+              "software_name": "fonttools",
+              "software_version": "4.38.0"
+            },
+            {
+              "id": "9ea09aa9-735b-4bd8-ba69-5c6a77708d36",
+              "software_name": "h5py",
+              "software_version": "3.7.0"
+            },
+            {
+              "id": "ced7a2f1-4c3f-4ed7-91b9-4d231624cd2b",
+              "software_name": "idna",
+              "software_version": "3.4"
+            },
+            {
+              "id": "88202f98-f8cb-4637-9385-df098763270d",
+              "software_name": "imageio",
+              "software_version": "2.22.4"
+            },
+            {
+              "id": "44f812e6-43a1-4d04-904a-6d198de7add7",
+              "software_name": "imageio-ffmpeg",
+              "software_version": "0.4.7"
+            },
+            {
+              "id": "b5c8902a-d495-4a28-a7e1-2c32bb855b5c",
+              "software_name": "importlib-metadata",
+              "software_version": "5.1.0"
+            },
+            {
+              "id": "50bcfb1d-b327-41fe-8c33-42376a5fbe61",
+              "software_name": "ipykernel",
+              "software_version": "6.17.1"
+            },
+            {
+              "id": "e5e81d1f-d11b-4a5e-83ac-a40325eb2060",
+              "software_name": "ipython",
+              "software_version": "8.7.0"
+            },
+            {
+              "id": "182f8e1d-f7e3-415f-a8e8-0bde7238caa2",
+              "software_name": "ipywidgets",
+              "software_version": "8.0.2"
+            },
+            {
+              "id": "4c5322ff-482c-414b-b440-5d971b284cab",
+              "software_name": "jedi",
+              "software_version": "0.18.2"
+            },
+            {
+              "id": "e0386be9-6085-40ed-bbeb-0f366364369f",
+              "software_name": "jupyter_client",
+              "software_version": "7.4.7"
+            },
+            {
+              "id": "921d9dcd-7826-4f0f-a579-24d5b93c8114",
+              "software_name": "jupyter_core",
+              "software_version": "5.1.0"
+            },
+            {
+              "id": "9955cbc4-884c-4468-bb3b-f0035dd4d2f4",
+              "software_name": "jupyterlab-widgets",
+              "software_version": "3.0.3"
+            },
+            {
+              "id": "bc474018-973c-4d6e-8520-0376f67dc212",
+              "software_name": "kiwisolver",
+              "software_version": "1.4.4"
+            },
+            {
+              "id": "aa0046f3-117d-4ca1-ab88-1b616becd6f1",
+              "software_name": "llvmlite",
+              "software_version": "0.39.1"
+            },
+            {
+              "id": "ebf73342-c15f-4aa5-b391-45e53f094d74",
+              "software_name": "lxml",
+              "software_version": "4.9.1"
+            },
+            {
+              "id": "38b6589b-497e-4436-b74c-2d2b9917f226",
+              "software_name": "Mako",
+              "software_version": "1.2.4"
+            },
+            {
+              "id": "195585b7-ef20-4d0e-9e4e-da9df4f857a2",
+              "software_name": "MarkupSafe",
+              "software_version": "2.1.1"
+            },
+            {
+              "id": "cf2821e2-90be-4d25-9b9b-9259d6ee2751",
+              "software_name": "matplotlib",
+              "software_version": "3.6.2"
+            },
+            {
+              "id": "9d96abbd-d456-44f8-92d8-ac580bcbbef5",
+              "software_name": "matplotlib-inline",
+              "software_version": "0.1.6"
+            },
+            {
+              "id": "e0d1e6a7-d284-4249-b37c-f7e5f7763aaf",
+              "software_name": "moviepy",
+              "software_version": "1.0.3"
+            },
+            {
+              "id": "29637d7c-c4e8-432e-8bfa-0f6cbfce7619",
+              "software_name": "nest-asyncio",
+              "software_version": "1.5.6"
+            },
+            {
+              "id": "c96532c5-7736-4404-81a4-ec8324900027",
+              "software_name": "networkx",
+              "software_version": "2.8.8"
+            },
+            {
+              "id": "7efbbd0f-aba5-4c4b-a7ca-3b1fde269810",
+              "software_name": "numba",
+              "software_version": "0.56.4"
+            },
+            {
+              "id": "968af5d0-7c10-44ad-81d0-f6c62c221cee",
+              "software_name": "numexpr",
+              "software_version": "2.8.4"
+            },
+            {
+              "id": "fd671b29-0378-4561-80b6-20436dcfb40c",
+              "software_name": "numpy",
+              "software_version": "1.23.5"
+            },
+            {
+              "id": "26ecbd76-7672-4d39-b212-02c18dfd80ba",
+              "software_name": "packaging",
+              "software_version": "21.3"
+            },
+            {
+              "id": "7d96155c-5343-4e94-8d0e-9506170cca0f",
+              "software_name": "parso",
+              "software_version": "0.8.3"
+            },
+            {
+              "id": "21a29993-0496-4a7f-8260-8c756cdbedb8",
+              "software_name": "pexpect",
+              "software_version": "4.8.0"
+            },
+            {
+              "id": "dfd199c7-9ba5-4f71-9ad5-f39d6d31f31f",
+              "software_name": "pickleshare",
+              "software_version": "0.7.5"
+            },
+            {
+              "id": "ce78c4be-3d07-4f63-b404-3019beb58b41",
+              "software_name": "Pillow",
+              "software_version": "9.3.0"
+            },
+            {
+              "id": "f70dfeb9-8ab0-4567-94d5-7ed6677b5cfd",
+              "software_name": "platformdirs",
+              "software_version": "2.5.4"
+            },
+            {
+              "id": "520cbb35-931e-46a0-a24f-bc1034a1b090",
+              "software_name": "proglog",
+              "software_version": "0.1.10"
+            },
+            {
+              "id": "c76fe8cb-acbb-463d-8a29-b1bd74b606be",
+              "software_name": "prompt-toolkit",
+              "software_version": "3.0.33"
+            },
+            {
+              "id": "3e960ea1-3f0f-42cf-a9d6-42296bbb1511",
+              "software_name": "psutil",
+              "software_version": "5.9.4"
+            },
+            {
+              "id": "e9f3e13b-ca04-44b9-834f-19358d63f071",
+              "software_name": "ptyprocess",
+              "software_version": "0.7.0"
+            },
+            {
+              "id": "7f3a5b4e-fb5a-4bbb-804b-13c7d664cf7c",
+              "software_name": "pure-eval",
+              "software_version": "0.2.2"
+            },
+            {
+              "id": "ec478677-9ede-41de-81b6-c13b28b8742a",
+              "software_name": "pycodestyle",
+              "software_version": "2.10.0"
+            },
+            {
+              "id": "72cdc343-c062-466c-b1be-3f743a95cd5c",
+              "software_name": "Pygments",
+              "software_version": "2.13.0"
+            },
+            {
+              "id": "ed350e2d-8198-4e51-ad8f-9fac9cf5ad69",
+              "software_name": "PyLEMS",
+              "software_version": "0.6.0"
+            },
+            {
+              "id": "83e96a67-f5b1-468a-8a1c-bd77ac76db48",
+              "software_name": "pyparsing",
+              "software_version": "3.0.9"
+            },
+            {
+              "id": "642a7d67-a045-47c7-92a0-fdb1ccab236c",
+              "software_name": "python-dateutil",
+              "software_version": "2.8.2"
+            },
+            {
+              "id": "8ccd3a9e-433c-4317-95de-c852a43f0550",
+              "software_name": "pyzmq",
+              "software_version": "24.0.1"
+            },
+            {
+              "id": "55cfcd66-6e55-48b2-af91-add04ad1c3d1",
+              "software_name": "requests",
+              "software_version": "2.28.1"
+            },
+            {
+              "id": "9ae9f557-dcba-46db-9bbf-5ef345d1b084",
+              "software_name": "scipy",
+              "software_version": "1.9.3"
+            },
+            {
+              "id": "3497f68e-f136-48e4-97ee-1070b8c79d7c",
+              "software_name": "six",
+              "software_version": "1.16.0"
+            },
+            {
+              "id": "391c8f32-98f0-4bc9-bece-275faf6499bd",
+              "software_name": "stack-data",
+              "software_version": "0.6.2"
+            },
+            {
+              "id": "b821b134-ac11-4974-ab13-838203e6ed31",
+              "software_name": "tomli",
+              "software_version": "2.0.1"
+            },
+            {
+              "id": "87757b46-fcb7-4557-9a68-638fad72aa07",
+              "software_name": "tornado",
+              "software_version": "6.2"
+            },
+            {
+              "id": "e8522555-15ae-4964-87ee-f9e029948c6b",
+              "software_name": "tqdm",
+              "software_version": "4.64.1"
+            },
+            {
+              "id": "e8c574f3-f894-4d31-a0c8-dc3a0e9ff175",
+              "software_name": "traitlets",
+              "software_version": "5.6.0"
+            },
+            {
+              "id": "09110b2a-3806-40c5-acea-7e0b5c4646f0",
+              "software_name": "tvb-data",
+              "software_version": "2.0"
+            },
+            {
+              "id": "fec73db5-28ec-4e40-8061-e03e379c7326",
+              "software_name": "tvb-library",
+              "software_version": "2.7.1"
+            },
+            {
+              "id": "972919c3-6954-4c25-a05d-11691ba56808",
+              "software_name": "urllib3",
+              "software_version": "1.26.13"
+            },
+            {
+              "id": "91dbe4e7-25f8-4368-a58e-2e90eddde4f2",
+              "software_name": "wcwidth",
+              "software_version": "0.2.5"
+            },
+            {
+              "id": "22907ce2-77de-4dc2-995c-8abecca9b337",
+              "software_name": "widgetsnbextension",
+              "software_version": "4.0.3"
+            },
+            {
+              "id": "fc670131-7e78-4df9-98df-1ce2ba7818b7",
+              "software_name": "wrapt",
+              "software_version": "1.14.1"
+            },
+            {
+              "id": "8e8928fe-243f-4063-a31c-793885c43015",
+              "software_name": "zipp",
+              "software_version": "3.11.0"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-f54aae7242be4c349e6a885b9d1aa5b7f0a54669",
+          "executable": "python",
+          "arguments": [
+            "run_simulation.py",
+            "result",
+            "synch",
+            "60",
+            "0",
+            "5000",
+            "1000",
+            "b=0",
+            "b=60"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-23T12:15:44.140047",
+        "end_time": "2023-03-23T12:49:35.639610",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 2031.499563,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": "27731e10-728b-4e5d-8149-4a9010c1ffdc",
+        "type": "simulation"
+      },
+      {
+        "id": "162f23f2-5333-4b9f-9d59-631b65c5771d",
+        "input": [
+          {
+            "description": "#main/visualization/results_folder",
+            "format": "application/json",
+            "hash": {
+              "value": "2b673d45f38971d2dd83f6bf6ad7b19b0e42306c",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/parameter.json",
+            "file_name": "result_b_60/parameter.json",
+            "size": 4576
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "b8d8587d802efe13f0c594775a9d744ae9269284",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_0.npy",
+            "file_name": "result_b_60/step_0.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "1c4a9ae0b80e6c7a34591d3670741af66dd65c58",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_1.npy",
+            "file_name": "result_b_60/step_1.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "20e6f8c058d8e62cbbb0b4868989ded6cc4da17b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_2.npy",
+            "file_name": "result_b_60/step_2.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "5e9d993df94f457d81f3882aee3c5ee50504a954",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_3.npy",
+            "file_name": "result_b_60/step_3.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "6cb450c9398830e22da00fac43046fec342d0511",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_4.npy",
+            "file_name": "result_b_60/step_4.npy",
+            "size": 328389664
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "097b7fb89d668429a026c2aa1b45b930a31f830d",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_5.npy",
+            "file_name": "result_b_60/step_5.npy",
+            "size": 128
+          },
+          {
+            "description": "#main/visualization/results_folder",
+            "format": null,
+            "hash": {
+              "value": "657611798cf10dbaf8fcf9845b17d1ca9d60e25b",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://result_b_60/step_init.npy",
+            "file_name": "result_b_60/step_init.npy",
+            "size": 1622144
+          }
+        ],
+        "output": [
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "87902102761ac0a455305d42f090e64ef04d4064",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://fig_psd_1679575863.png",
+            "file_name": "fig_psd_1679575863.png",
+            "size": 50113
+          },
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "cb54bc688302c3593c43e2e2bae413a08cec6359",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://fig_traces_1679575812.png",
+            "file_name": "fig_traces_1679575812.png",
+            "size": 236390
+          }
+        ],
+        "environment": {
+          "id": "59a114db-3f31-4c29-bef4-a8573f818b4b",
+          "name": "docker-registry.ebrains.eu/sc3/plot_results:latest",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.4.0-77-generic",
+            "OperatingSystem": "Ubuntu 20.04.2 LTS",
+            "OSType": "linux",
+            "Architecture": "x86_64",
+            "NCPU": 4,
+            "MemTotal": 16791523328
+          },
+          "software": [
+            {
+              "id": "962b9af3-dfcd-47ca-8950-b5d8794bc016",
+              "software_name": "Python",
+              "software_version": "3.8.15"
+            },
+            {
+              "id": "29260d20-dc18-4779-83ba-3022295b6ebb",
+              "software_name": "asttokens",
+              "software_version": "2.2.0"
+            },
+            {
+              "id": "01442b2d-4a13-4857-bfb2-ff6730bd459f",
+              "software_name": "autopep8",
+              "software_version": "2.0.0"
+            },
+            {
+              "id": "43a03262-9e2c-4170-8be3-22325044e998",
+              "software_name": "backcall",
+              "software_version": "0.2.0"
+            },
+            {
+              "id": "fc866cd1-5205-40d6-ab35-2eacbe590c9e",
+              "software_name": "certifi",
+              "software_version": "2022.9.24"
+            },
+            {
+              "id": "a27decd8-c4a1-42a0-95bc-854304b8af9b",
+              "software_name": "charset-normalizer",
+              "software_version": "2.1.1"
+            },
+            {
+              "id": "858cc6d7-dcf1-4974-8973-11212fdb2d39",
+              "software_name": "contourpy",
+              "software_version": "1.0.6"
+            },
+            {
+              "id": "fa47b5d5-36af-426a-90bd-85d81d165b2a",
+              "software_name": "cycler",
+              "software_version": "0.11.0"
+            },
+            {
+              "id": "67746d39-1cc6-4de1-a27f-1bbe8fd284ad",
+              "software_name": "debugpy",
+              "software_version": "1.6.4"
+            },
+            {
+              "id": "60b4eade-26b3-4c30-932a-d7e632a845aa",
+              "software_name": "decorator",
+              "software_version": "4.4.2"
+            },
+            {
+              "id": "f0993ad6-b7c0-4edd-93eb-ad6f435ec7a7",
+              "software_name": "Deprecated",
+              "software_version": "1.2.13"
+            },
+            {
+              "id": "6f61bf27-3994-4f5e-8f95-c42282f8726f",
+              "software_name": "entrypoints",
+              "software_version": "0.4"
+            },
+            {
+              "id": "df807dad-9e28-4781-9b71-ca9dda5e428e",
+              "software_name": "executing",
+              "software_version": "1.2.0"
+            },
+            {
+              "id": "fc467f94-4f20-4d82-8df5-24f67bb46f67",
+              "software_name": "fonttools",
+              "software_version": "4.38.0"
+            },
+            {
+              "id": "9ea09aa9-735b-4bd8-ba69-5c6a77708d36",
+              "software_name": "h5py",
+              "software_version": "3.7.0"
+            },
+            {
+              "id": "ced7a2f1-4c3f-4ed7-91b9-4d231624cd2b",
+              "software_name": "idna",
+              "software_version": "3.4"
+            },
+            {
+              "id": "88202f98-f8cb-4637-9385-df098763270d",
+              "software_name": "imageio",
+              "software_version": "2.22.4"
+            },
+            {
+              "id": "44f812e6-43a1-4d04-904a-6d198de7add7",
+              "software_name": "imageio-ffmpeg",
+              "software_version": "0.4.7"
+            },
+            {
+              "id": "b5c8902a-d495-4a28-a7e1-2c32bb855b5c",
+              "software_name": "importlib-metadata",
+              "software_version": "5.1.0"
+            },
+            {
+              "id": "50bcfb1d-b327-41fe-8c33-42376a5fbe61",
+              "software_name": "ipykernel",
+              "software_version": "6.17.1"
+            },
+            {
+              "id": "e5e81d1f-d11b-4a5e-83ac-a40325eb2060",
+              "software_name": "ipython",
+              "software_version": "8.7.0"
+            },
+            {
+              "id": "182f8e1d-f7e3-415f-a8e8-0bde7238caa2",
+              "software_name": "ipywidgets",
+              "software_version": "8.0.2"
+            },
+            {
+              "id": "4c5322ff-482c-414b-b440-5d971b284cab",
+              "software_name": "jedi",
+              "software_version": "0.18.2"
+            },
+            {
+              "id": "e0386be9-6085-40ed-bbeb-0f366364369f",
+              "software_name": "jupyter_client",
+              "software_version": "7.4.7"
+            },
+            {
+              "id": "921d9dcd-7826-4f0f-a579-24d5b93c8114",
+              "software_name": "jupyter_core",
+              "software_version": "5.1.0"
+            },
+            {
+              "id": "9955cbc4-884c-4468-bb3b-f0035dd4d2f4",
+              "software_name": "jupyterlab-widgets",
+              "software_version": "3.0.3"
+            },
+            {
+              "id": "bc474018-973c-4d6e-8520-0376f67dc212",
+              "software_name": "kiwisolver",
+              "software_version": "1.4.4"
+            },
+            {
+              "id": "aa0046f3-117d-4ca1-ab88-1b616becd6f1",
+              "software_name": "llvmlite",
+              "software_version": "0.39.1"
+            },
+            {
+              "id": "ebf73342-c15f-4aa5-b391-45e53f094d74",
+              "software_name": "lxml",
+              "software_version": "4.9.1"
+            },
+            {
+              "id": "38b6589b-497e-4436-b74c-2d2b9917f226",
+              "software_name": "Mako",
+              "software_version": "1.2.4"
+            },
+            {
+              "id": "195585b7-ef20-4d0e-9e4e-da9df4f857a2",
+              "software_name": "MarkupSafe",
+              "software_version": "2.1.1"
+            },
+            {
+              "id": "cf2821e2-90be-4d25-9b9b-9259d6ee2751",
+              "software_name": "matplotlib",
+              "software_version": "3.6.2"
+            },
+            {
+              "id": "9d96abbd-d456-44f8-92d8-ac580bcbbef5",
+              "software_name": "matplotlib-inline",
+              "software_version": "0.1.6"
+            },
+            {
+              "id": "e0d1e6a7-d284-4249-b37c-f7e5f7763aaf",
+              "software_name": "moviepy",
+              "software_version": "1.0.3"
+            },
+            {
+              "id": "29637d7c-c4e8-432e-8bfa-0f6cbfce7619",
+              "software_name": "nest-asyncio",
+              "software_version": "1.5.6"
+            },
+            {
+              "id": "c96532c5-7736-4404-81a4-ec8324900027",
+              "software_name": "networkx",
+              "software_version": "2.8.8"
+            },
+            {
+              "id": "7efbbd0f-aba5-4c4b-a7ca-3b1fde269810",
+              "software_name": "numba",
+              "software_version": "0.56.4"
+            },
+            {
+              "id": "968af5d0-7c10-44ad-81d0-f6c62c221cee",
+              "software_name": "numexpr",
+              "software_version": "2.8.4"
+            },
+            {
+              "id": "fd671b29-0378-4561-80b6-20436dcfb40c",
+              "software_name": "numpy",
+              "software_version": "1.23.5"
+            },
+            {
+              "id": "26ecbd76-7672-4d39-b212-02c18dfd80ba",
+              "software_name": "packaging",
+              "software_version": "21.3"
+            },
+            {
+              "id": "7d96155c-5343-4e94-8d0e-9506170cca0f",
+              "software_name": "parso",
+              "software_version": "0.8.3"
+            },
+            {
+              "id": "21a29993-0496-4a7f-8260-8c756cdbedb8",
+              "software_name": "pexpect",
+              "software_version": "4.8.0"
+            },
+            {
+              "id": "dfd199c7-9ba5-4f71-9ad5-f39d6d31f31f",
+              "software_name": "pickleshare",
+              "software_version": "0.7.5"
+            },
+            {
+              "id": "ce78c4be-3d07-4f63-b404-3019beb58b41",
+              "software_name": "Pillow",
+              "software_version": "9.3.0"
+            },
+            {
+              "id": "f70dfeb9-8ab0-4567-94d5-7ed6677b5cfd",
+              "software_name": "platformdirs",
+              "software_version": "2.5.4"
+            },
+            {
+              "id": "520cbb35-931e-46a0-a24f-bc1034a1b090",
+              "software_name": "proglog",
+              "software_version": "0.1.10"
+            },
+            {
+              "id": "c76fe8cb-acbb-463d-8a29-b1bd74b606be",
+              "software_name": "prompt-toolkit",
+              "software_version": "3.0.33"
+            },
+            {
+              "id": "3e960ea1-3f0f-42cf-a9d6-42296bbb1511",
+              "software_name": "psutil",
+              "software_version": "5.9.4"
+            },
+            {
+              "id": "e9f3e13b-ca04-44b9-834f-19358d63f071",
+              "software_name": "ptyprocess",
+              "software_version": "0.7.0"
+            },
+            {
+              "id": "7f3a5b4e-fb5a-4bbb-804b-13c7d664cf7c",
+              "software_name": "pure-eval",
+              "software_version": "0.2.2"
+            },
+            {
+              "id": "ec478677-9ede-41de-81b6-c13b28b8742a",
+              "software_name": "pycodestyle",
+              "software_version": "2.10.0"
+            },
+            {
+              "id": "72cdc343-c062-466c-b1be-3f743a95cd5c",
+              "software_name": "Pygments",
+              "software_version": "2.13.0"
+            },
+            {
+              "id": "ed350e2d-8198-4e51-ad8f-9fac9cf5ad69",
+              "software_name": "PyLEMS",
+              "software_version": "0.6.0"
+            },
+            {
+              "id": "83e96a67-f5b1-468a-8a1c-bd77ac76db48",
+              "software_name": "pyparsing",
+              "software_version": "3.0.9"
+            },
+            {
+              "id": "642a7d67-a045-47c7-92a0-fdb1ccab236c",
+              "software_name": "python-dateutil",
+              "software_version": "2.8.2"
+            },
+            {
+              "id": "8ccd3a9e-433c-4317-95de-c852a43f0550",
+              "software_name": "pyzmq",
+              "software_version": "24.0.1"
+            },
+            {
+              "id": "55cfcd66-6e55-48b2-af91-add04ad1c3d1",
+              "software_name": "requests",
+              "software_version": "2.28.1"
+            },
+            {
+              "id": "9ae9f557-dcba-46db-9bbf-5ef345d1b084",
+              "software_name": "scipy",
+              "software_version": "1.9.3"
+            },
+            {
+              "id": "3497f68e-f136-48e4-97ee-1070b8c79d7c",
+              "software_name": "six",
+              "software_version": "1.16.0"
+            },
+            {
+              "id": "391c8f32-98f0-4bc9-bece-275faf6499bd",
+              "software_name": "stack-data",
+              "software_version": "0.6.2"
+            },
+            {
+              "id": "b821b134-ac11-4974-ab13-838203e6ed31",
+              "software_name": "tomli",
+              "software_version": "2.0.1"
+            },
+            {
+              "id": "87757b46-fcb7-4557-9a68-638fad72aa07",
+              "software_name": "tornado",
+              "software_version": "6.2"
+            },
+            {
+              "id": "e8522555-15ae-4964-87ee-f9e029948c6b",
+              "software_name": "tqdm",
+              "software_version": "4.64.1"
+            },
+            {
+              "id": "e8c574f3-f894-4d31-a0c8-dc3a0e9ff175",
+              "software_name": "traitlets",
+              "software_version": "5.6.0"
+            },
+            {
+              "id": "09110b2a-3806-40c5-acea-7e0b5c4646f0",
+              "software_name": "tvb-data",
+              "software_version": "2.0"
+            },
+            {
+              "id": "fec73db5-28ec-4e40-8061-e03e379c7326",
+              "software_name": "tvb-library",
+              "software_version": "2.7.1"
+            },
+            {
+              "id": "972919c3-6954-4c25-a05d-11691ba56808",
+              "software_name": "urllib3",
+              "software_version": "1.26.13"
+            },
+            {
+              "id": "91dbe4e7-25f8-4368-a58e-2e90eddde4f2",
+              "software_name": "wcwidth",
+              "software_version": "0.2.5"
+            },
+            {
+              "id": "22907ce2-77de-4dc2-995c-8abecca9b337",
+              "software_name": "widgetsnbextension",
+              "software_version": "4.0.3"
+            },
+            {
+              "id": "fc670131-7e78-4df9-98df-1ce2ba7818b7",
+              "software_name": "wrapt",
+              "software_version": "1.14.1"
+            },
+            {
+              "id": "8e8928fe-243f-4063-a31c-793885c43015",
+              "software_name": "zipp",
+              "software_version": "3.11.0"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-3175bd041bdf366ff12ec4f7786c7a9709e8d7fb",
+          "executable": "python",
+          "arguments": [
+            "plot_results.py",
+            "output",
+            "0",
+            "60",
+            "5000",
+            "1000",
+            "b=60",
+            "b=0"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-23T12:49:42.155212",
+        "end_time": "2023-03-23T12:51:05.706464",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 83.551252,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": "f374525f-4565-4914-9e79-07189cb68740",
+        "type": "visualization"
+      },
+      {
+        "id": "60584c09-41a3-4786-ae26-db3693c89cec",
+        "input": [
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "87902102761ac0a455305d42f090e64ef04d4064",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://fig_psd_1679575863.png",
+            "file_name": "fig_psd_1679575863.png",
+            "size": 50113
+          },
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "cb54bc688302c3593c43e2e2bae413a08cec6359",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://fig_traces_1679575812.png",
+            "file_name": "fig_traces_1679575812.png",
+            "size": 236390
+          }
+        ],
+        "output": [
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "87902102761ac0a455305d42f090e64ef04d4064",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/provenance-api-development/fig_psd_1679575863.png",
+            "file_name": "fig_psd_1679575863.png",
+            "size": 50113
+          },
+          {
+            "description": "#main/push_bucket/folder",
+            "format": "image/png",
+            "hash": {
+              "value": "cb54bc688302c3593c43e2e2bae413a08cec6359",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/provenance-api-development/fig_traces_1679575812.png",
+            "file_name": "fig_traces_1679575812.png",
+            "size": 236390
+          }
+        ],
+        "environment": {
+          "id": "96c17938-c9f4-45d6-843e-db731feca47c",
+          "name": "docker-registry.ebrains.eu/sc3/bucket_push_file:latest",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.4.0-77-generic",
+            "OperatingSystem": "Ubuntu 20.04.2 LTS",
+            "OSType": "linux",
+            "Architecture": "x86_64",
+            "NCPU": 4,
+            "MemTotal": 16791523328
+          },
+          "software": [
+            {
+              "id": "962b9af3-dfcd-47ca-8950-b5d8794bc016",
+              "software_name": "Python",
+              "software_version": "3.8.15"
+            },
+            {
+              "id": "fc866cd1-5205-40d6-ab35-2eacbe590c9e",
+              "software_name": "certifi",
+              "software_version": "2022.9.24"
+            },
+            {
+              "id": "a27decd8-c4a1-42a0-95bc-854304b8af9b",
+              "software_name": "charset-normalizer",
+              "software_version": "2.1.1"
+            },
+            {
+              "id": "ced7a2f1-4c3f-4ed7-91b9-4d231624cd2b",
+              "software_name": "idna",
+              "software_version": "3.4"
+            },
+            {
+              "id": "55cfcd66-6e55-48b2-af91-add04ad1c3d1",
+              "software_name": "requests",
+              "software_version": "2.28.1"
+            },
+            {
+              "id": "c236477c-02d0-4137-8054-76d5d309b60e",
+              "software_name": "urllib3",
+              "software_version": "1.26.12"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-8699f383fdc2ceb048b41eb6b3675ec480f6893e",
+          "executable": "python",
+          "arguments": [
+            "bucket_push_file.py",
+            "provenance-api-development",
+            "<MASKED SECRET>"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-23T12:51:05.734176",
+        "end_time": "2023-03-23T12:51:07.482657",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 1.748481,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": "ebe9cae4-7d28-4655-800b-530094293453",
+        "type": "data transfer"
+      }
+    ],
+    "started_by": {
+      "given_name": "Andrew P.",
+      "family_name": "Davison",
+      "orcid": "https://orcid.org/0000-0002-4793-7541"
+    },
+    "recipe_id": "bd71c7c0-c2bb-454a-8d18-12ef96f45cdd"
+  },
+  {
+    "id": "93427a9c-36fd-4bdf-b4e3-1c4e55045786",
+    "configuration": null,
+    "stages": [
+      {
+        "id": "c21d75a7-30dd-467c-93dd-40939949daa9",
+        "input": [
+          {
+            "description": "Computes the PSD (Power Spectral Density) for every selected channel in the signal",
+            "format": "text/x-python",
+            "hash": {
+              "value": "0dcc28d28a479b154b6eea243115e4481f1ade1a",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/blob/main/PSD_workflow_KG/step1/analysis.py",
+            "file_name": "step1/analysis.py",
+            "size": 2136
+          },
+          {
+            "description": null,
+            "format": "application/vnd.spike2.sonpy.son",
+            "hash": {
+              "value": "64dda9e581f1e58ba665521ac1d3d627a8e59adb",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://object.cscs.ch/v1/AUTH_25b4e28a742d4987a7b6f84c0c36512e/hbp-01852/data-originals/sub-1/hbp-01852_sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.smr",
+            "file_name": "hbp-01852_sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.smr",
+            "size": 72756224
+          }
+        ],
+        "output": [
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/input_file",
+            "format": "application/json",
+            "hash": null,
+            "location": "file://psd.json",
+            "file_name": "psd.json",
+            "size": 3515921
+          }
+        ],
+        "environment": {
+          "id": "c020d301-17ea-4a70-95f3-759a7ec0f361",
+          "name": "docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_analysis_srm:latest",
+          "hardware": "generic",
+          "configuration": null,
+          "software": [
+            {
+              "id": "0cd58593-e215-45ba-8cd0-d5e667623a95",
+              "software_name": "cwltool",
+              "software_version": "3.1.20220224085855"
+            },
+            {
+              "id": "0d370fc3-db34-4d62-8f41-73533bf1c059",
+              "software_name": "Docker",
+              "software_version": "20.10.12"
+            },
+            {
+              "id": "0a8a5be0-09e3-48b3-93b9-ad56be26cb0c",
+              "software_name": "Python",
+              "software_version": "3.8.12"
+            }
+          ],
+          "description": "Container execution of image docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_analysis_srm:latest"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-9029d4a2c7c494a79aeefbadf2e551f27e5fd3fa",
+          "executable": "python",
+          "arguments": [
+            "step1/analysis.py",
+            "hbp-01852_sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.smr",
+            "--output_file psd.json",
+            "--channels 1 4 0 3 2"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2022-04-07T16:17:56.155481",
+        "end_time": "2022-04-07T16:20:23.362197",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 147,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "demo",
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "data analysis"
+      },
+      {
+        "id": "a72fdf93-f9e4-49e6-b680-68abd7f410bf",
+        "input": [
+          {
+            "description": "Plots the PSDs for selected channels of a signal together",
+            "format": "text/x-python",
+            "hash": {
+              "value": "4b7eef5db00d535457fa5b4002c3fa4e01fceb72",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/blob/main/PSD_workflow_KG/step2/visualization.py",
+            "file_name": "step2/visualization.py",
+            "size": 1257
+          },
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/input_file",
+            "format": "application/json",
+            "hash": null,
+            "location": "file://psd.json",
+            "file_name": "psd.json",
+            "size": 3515921
+          }
+        ],
+        "output": [
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/plot",
+            "format": "image/png",
+            "hash": {
+              "value": "ec7ede9a48002ba61627ace37ae2b4dbba34b858",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://drive.ebrains.eu/f/5e2f90de59ef4559813d/?dl=1",
+            "file_name": "output.png",
+            "size": 64935
+          }
+        ],
+        "environment": {
+          "id": "708d3983-1e78-49a1-bf06-e3d0f7ebd78d",
+          "name": "docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_visualization",
+          "hardware": "generic",
+          "configuration": null,
+          "software": [
+            {
+              "id": "0cd58593-e215-45ba-8cd0-d5e667623a95",
+              "software_name": "cwltool",
+              "software_version": "3.1.20220224085855"
+            },
+            {
+              "id": "0d370fc3-db34-4d62-8f41-73533bf1c059",
+              "software_name": "Docker",
+              "software_version": "20.10.12"
+            },
+            {
+              "id": "d0a6fd31-e17f-4eca-9e09-08dabfd2b1f0",
+              "software_name": "Python",
+              "software_version": "3.9.7"
+            }
+          ],
+          "description": "Container execution of image docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_visualization"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-d014e170b9bbe0ebc1866e76af88041233444163",
+          "executable": "python",
+          "arguments": [
+            "step2/visualization.py",
+            "psd.json",
+            "--output_file output.png",
+            "--channels 1 3 0 4 2"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2022-04-07T16:20:23.373449",
+        "end_time": "2022-04-07T16:20:32.792972",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 9,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "demo",
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "visualization"
+      }
+    ],
+    "started_by": {
+      "given_name": "Andrew P.",
+      "family_name": "Davison",
+      "orcid": "https://orcid.org/0000-0002-4793-7541"
+    },
+    "recipe_id": "06cd43c9-32b7-465f-b93c-fdc54977dcc8"
+  },
+  {
+    "id": "c79df8fd-334b-4728-a8bb-7102d6e91eee",
+    "configuration": {
+      "model_uuid": ":c407130b-1e06-486c-a02c-aeb0ccbc7eca",
+      "script_path": "Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+      "script_arguments": [
+        "nest",
+        "CUBA"
+      ],
+      "dataset_version_uuid": "73f922e4-de18-4201-975c-8f6ec4b98b6c",
+      "token": "<MASKED SECRET>"
+    },
+    "stages": [
+      {
+        "id": "cdf37b98-0181-4086-92f3-6283101178e4",
+        "input": [
+          {
+            "model_version_id": "c407130b-1e06-486c-a02c-aeb0ccbc7eca"
+          }
+        ],
+        "output": [
+          {
+            "description": "downloaded_code",
+            "format": "text/plain",
+            "hash": {
+              "value": "10f817de3838b511cf1e5651fe9f01117c32e5b7",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/LICENSE.txt",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/LICENSE.txt",
+            "size": 1073
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/html",
+            "hash": {
+              "value": "d1892d4055afa0646015e2f28602e1d3563c3025",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/README.html",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/README.html",
+            "size": 1946
+          },
+          {
+            "description": "downloaded_code",
+            "format": "image/png",
+            "hash": {
+              "value": "6dcd97f6358bfba1e324ee3213cd2329a5683ad5",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_COBA.png",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_COBA.png",
+            "size": 86928
+          },
+          {
+            "description": "downloaded_code",
+            "format": "image/png",
+            "hash": {
+              "value": "6ad7989b70e9c167e5d76ffd2458f4b3ea7250cd",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_CUBA.png",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_CUBA.png",
+            "size": 79999
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/x-python",
+            "hash": {
+              "value": "f1c87e31b72b0d51218993e1695b6e53475f3e20",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_graphs.py",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_graphs.py",
+            "size": 7548
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/x-python",
+            "hash": {
+              "value": "096a3734798714bd859d32033f892249d203d892",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+            "size": 10996
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/markdown",
+            "hash": {
+              "value": "a2c9231bba07794c26c0f92580c8b7a2650001f3",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/README.md",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/README.md",
+            "size": 1089
+          }
+        ],
+        "environment": {
+          "id": "0824f20a-6a70-4849-bbfb-8312e429cbac",
+          "name": "docker-registry.ebrains.eu/reproducibility/cwl-workflows/download_kg_model@sha256:d5590da8876330e95faea5c21de003689da18c8e80e1e96d7beb6a1a05a4afbf",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.10.76-linuxkit",
+            "OperatingSystem": "Docker Desktop",
+            "OSType": "linux",
+            "Architecture": "aarch64",
+            "NCPU": 4,
+            "MemTotal": 4124364800
+          },
+          "software": [
+            {
+              "id": "4fcc2a98-e7c8-41d3-aa54-c3350ec0bd1e",
+              "software_name": "Python",
+              "software_version": "3.11.2"
+            },
+            {
+              "id": "41a8d8c8-6efb-442c-963d-5fe87dbade7f",
+              "software_name": "certifi",
+              "software_version": "2022.12.7"
+            },
+            {
+              "id": "39ea3366-6a28-4e28-b45b-63d2c4ffebe7",
+              "software_name": "charset-normalizer",
+              "software_version": "3.0.1"
+            },
+            {
+              "id": "714d65ff-478b-49b9-a3de-95bd9496f9d3",
+              "software_name": "click",
+              "software_version": "8.1.3"
+            },
+            {
+              "id": "ced7a2f1-4c3f-4ed7-91b9-4d231624cd2b",
+              "software_name": "idna",
+              "software_version": "3.4"
+            },
+            {
+              "id": "126ae8da-1368-4a50-bde5-4570d54023c9",
+              "software_name": "requests",
+              "software_version": "2.28.2"
+            },
+            {
+              "id": "0d2ec5e8-0acc-4c8a-a596-2f1f8c78fed0",
+              "software_name": "urllib3",
+              "software_version": "1.26.14"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-9d29a8ca1207cb4994953c4d12ede5da86c3b2f8",
+          "executable": "python",
+          "arguments": [
+            "download_KG_model.py",
+            "c407130b-1e06-486c-a02c-aeb0ccbc7eca"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-07T11:40:41.142185",
+        "end_time": "2023-03-07T11:40:43.772804",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 2.630619,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "data transfer"
+      },
+      {
+        "id": "5fc849f3-5845-4a09-be24-2cf458635a3e",
+        "input": [],
+        "output": [
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "127e0fe645f439a4f6d7883ee47b8b3ab942f9d7",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_brian2_np1_20230213-145841.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_brian2_np1_20230213-145841.pkl",
+            "size": 413195
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "f39b71e33a13a3b2f701f88d3bb8842bfbc41dfa",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_nest_np1_20230213-144543.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_nest_np1_20230213-144543.pkl",
+            "size": 489799
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "b76a8e0232ed0186412b3b4655f9e5152c3d4053",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_neuron_np1_20230213-144609.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_neuron_np1_20230213-144609.pkl",
+            "size": 1117124
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "f012e759c3de3c32d9bc281d237c2a1abd817aa0",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_brian2_np1_20230213-145841.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_brian2_np1_20230213-145841.pkl",
+            "size": 63838
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "74b0a447f116cbf2c576edd8dc31d9674f7a2341",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_nest_np1_20230213-144543.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_nest_np1_20230213-144543.pkl",
+            "size": 81711
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "c815e3d9d8619b95cfc46a45fea325b5cba10fda",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_neuron_np1_20230213-144609.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_neuron_np1_20230213-144609.pkl",
+            "size": 224647
+          }
+        ],
+        "environment": {
+          "id": "7e2dc13f-f433-4eb2-bab3-b13a1ad026d7",
+          "name": "docker-registry.ebrains.eu/reproducibility/cwl-workflows/download_kg_dataset@sha256:???",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.10.76-linuxkit",
+            "OperatingSystem": "Docker Desktop",
+            "OSType": "linux",
+            "Architecture": "aarch64",
+            "NCPU": 4,
+            "MemTotal": 4124364800
+          },
+          "software": [
+            {
+              "id": "4fcc2a98-e7c8-41d3-aa54-c3350ec0bd1e",
+              "software_name": "Python",
+              "software_version": "3.11.2"
+            },
+            {
+              "id": "41a8d8c8-6efb-442c-963d-5fe87dbade7f",
+              "software_name": "certifi",
+              "software_version": "2022.12.7"
+            },
+            {
+              "id": "39ea3366-6a28-4e28-b45b-63d2c4ffebe7",
+              "software_name": "charset-normalizer",
+              "software_version": "3.0.1"
+            },
+            {
+              "id": "714d65ff-478b-49b9-a3de-95bd9496f9d3",
+              "software_name": "click",
+              "software_version": "8.1.3"
+            },
+            {
+              "id": "358424df-aa93-4e88-b538-ea20d60f8c8a",
+              "software_name": "ebrains-kg-core",
+              "software_version": "0.9.14"
+            },
+            {
+              "id": "b5cdbe99-6313-4f86-a49c-7187836efa1d",
+              "software_name": "fairgraph",
+              "software_version": "unknown"
+            },
+            {
+              "id": "ced7a2f1-4c3f-4ed7-91b9-4d231624cd2b",
+              "software_name": "idna",
+              "software_version": "3.4"
+            },
+            {
+              "id": "6bf69620-966b-4235-aac5-50eb5e36f0b2",
+              "software_name": "pathlib2",
+              "software_version": "2.3.7.post1"
+            },
+            {
+              "id": "e1fbcefd-92e2-4d22-8811-501ee0e6a390",
+              "software_name": "pydantic",
+              "software_version": "1.10.4"
+            },
+            {
+              "id": "fef7c32c-67cf-4d79-8777-be8c441dde8b",
+              "software_name": "PyLD",
+              "software_version": "0.8.2"
+            },
+            {
+              "id": "642a7d67-a045-47c7-92a0-fdb1ccab236c",
+              "software_name": "python-dateutil",
+              "software_version": "2.8.2"
+            },
+            {
+              "id": "126ae8da-1368-4a50-bde5-4570d54023c9",
+              "software_name": "requests",
+              "software_version": "2.28.2"
+            },
+            {
+              "id": "3497f68e-f136-48e4-97ee-1070b8c79d7c",
+              "software_name": "six",
+              "software_version": "1.16.0"
+            },
+            {
+              "id": "0291e0b3-b5b7-440d-9675-f7b9b1a44d56",
+              "software_name": "tabulate",
+              "software_version": "0.9.0"
+            },
+            {
+              "id": "e8522555-15ae-4964-87ee-f9e029948c6b",
+              "software_name": "tqdm",
+              "software_version": "4.64.1"
+            },
+            {
+              "id": "721819c0-1beb-4d25-857d-fbd95a2a7e1d",
+              "software_name": "typing_extensions",
+              "software_version": "4.4.0"
+            },
+            {
+              "id": "0d2ec5e8-0acc-4c8a-a596-2f1f8c78fed0",
+              "software_name": "urllib3",
+              "software_version": "1.26.14"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-a134a04921507b6ee53b663f66656f5fb791e5e3",
+          "executable": "python",
+          "arguments": [
+            "download_KG_dataset.py",
+            "--token <MASKED SECRET>",
+            "73f922e4-de18-4201-975c-8f6ec4b98b6c"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-07T11:40:38.557606",
+        "end_time": "2023-03-07T11:40:41.104419",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 2.546813,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "data transfer"
+      },
+      {
+        "id": "f4811c54-ea07-4022-b655-bcfe35b5ebc7",
+        "input": [
+          {
+            "description": "downloaded_code",
+            "format": "text/html",
+            "hash": {
+              "value": "d1892d4055afa0646015e2f28602e1d3563c3025",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/README.html",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/README.html",
+            "size": 1946
+          },
+          {
+            "description": "downloaded_code",
+            "format": "image/png",
+            "hash": {
+              "value": "6dcd97f6358bfba1e324ee3213cd2329a5683ad5",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_COBA.png",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_COBA.png",
+            "size": 86928
+          },
+          {
+            "description": "downloaded_code",
+            "format": "image/png",
+            "hash": {
+              "value": "6ad7989b70e9c167e5d76ffd2458f4b3ea7250cd",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_CUBA.png",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_CUBA.png",
+            "size": 79999
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/x-python",
+            "hash": {
+              "value": "f1c87e31b72b0d51218993e1695b6e53475f3e20",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_graphs.py",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmark_graphs.py",
+            "size": 7548
+          },
+          {
+            "description": "downloaded_code",
+            "format": "text/x-python",
+            "hash": {
+              "value": "096a3734798714bd859d32033f892249d203d892",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+            "file_name": "downloads/Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+            "size": 10996
+          }
+        ],
+        "output": [
+          {
+            "description": "simulation_results",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "734c678973594048ee5fb074641c6c652a2f02db",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://Results/20230303/VAbenchmarks_CUBA_exc_nest_np1_20230214-140028.pkl",
+            "file_name": "Results/20230303/VAbenchmarks_CUBA_exc_nest_np1_20230214-140028.pkl",
+            "size": 489799
+          },
+          {
+            "description": "simulation_results",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "48bcbd72b38741d3413c5822358713220ed4719d",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://Results/20230303/VAbenchmarks_CUBA_inh_nest_np1_20230214-140028.pkl",
+            "file_name": "Results/20230303/VAbenchmarks_CUBA_inh_nest_np1_20230214-140028.pkl",
+            "size": 81711
+          }
+        ],
+        "environment": {
+          "id": "5939774f-5910-425c-9c41-b1cef77e2b68",
+          "name": "neuralensemble/simulation:arm64_pynn0101@sha256:???",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.10.76-linuxkit",
+            "OperatingSystem": "Docker Desktop",
+            "OSType": "linux",
+            "Architecture": "aarch64",
+            "NCPU": 4,
+            "MemTotal": 4124364800
+          },
+          "software": [
+            {
+              "id": "0de79e41-a8ba-48ae-9def-faaaec3d0941",
+              "software_name": "Python",
+              "software_version": "3.9.2"
+            },
+            {
+              "id": "eeabdc29-81ae-4c30-8a6f-fe48f2e20790",
+              "software_name": "asttokens",
+              "software_version": "2.2.1"
+            },
+            {
+              "id": "43a03262-9e2c-4170-8be3-22325044e998",
+              "software_name": "backcall",
+              "software_version": "0.2.0"
+            },
+            {
+              "id": "e31eeabe-e0e2-4915-a597-64f603963739",
+              "software_name": "Brian2",
+              "software_version": "2.5.1"
+            },
+            {
+              "id": "84620198-9955-43d5-bd92-99ab6b091487",
+              "software_name": "cycler",
+              "software_version": "0.10.0"
+            },
+            {
+              "id": "30c10376-0a54-4180-b928-262290208945",
+              "software_name": "Cython",
+              "software_version": "0.29.21"
+            },
+            {
+              "id": "60b4eade-26b3-4c30-932a-d7e632a845aa",
+              "software_name": "decorator",
+              "software_version": "4.4.2"
+            },
+            {
+              "id": "c4c2a974-b738-42d6-8622-712773cb567d",
+              "software_name": "Django",
+              "software_version": "1.8.19"
+            },
+            {
+              "id": "14894d07-6500-421c-959b-322319dc300d",
+              "software_name": "django-tagging",
+              "software_version": "0.5.0"
+            },
+            {
+              "id": "57850f51-43af-4d58-bfbf-fdb9e400ce21",
+              "software_name": "docutils",
+              "software_version": "0.16"
+            },
+            {
+              "id": "df807dad-9e28-4781-9b71-ca9dda5e428e",
+              "software_name": "executing",
+              "software_version": "1.2.0"
+            },
+            {
+              "id": "098936ad-fcb9-470d-92aa-2f6256151b65",
+              "software_name": "future",
+              "software_version": "0.18.3"
+            },
+            {
+              "id": "92dab3a3-205c-4c55-826b-4b48c1322fb0",
+              "software_name": "gitdb",
+              "software_version": "4.0.10"
+            },
+            {
+              "id": "a362348f-c0ff-4a23-8dac-dbf06d168a65",
+              "software_name": "GitPython",
+              "software_version": "3.1.30"
+            },
+            {
+              "id": "1e3a1672-5917-4e39-aa24-17c67faaee79",
+              "software_name": "h5py",
+              "software_version": "2.10.0"
+            },
+            {
+              "id": "2e39697b-822b-42fe-99db-dabb610f2d06",
+              "software_name": "h5py.-debian-h5py-serial",
+              "software_version": "2.10.0"
+            },
+            {
+              "id": "f791018c-329c-4265-b0c4-9ee5909a4cc0",
+              "software_name": "hgapi",
+              "software_version": "1.7.4"
+            },
+            {
+              "id": "802e0f35-e5de-419d-8da9-c9bc0722b857",
+              "software_name": "httplib2",
+              "software_version": "0.18.1"
+            },
+            {
+              "id": "44067cb7-d51d-493e-a4a2-2a1ce4c40689",
+              "software_name": "ipython",
+              "software_version": "8.10.0"
+            },
+            {
+              "id": "8f7228da-e0a6-4e45-ac8d-14e8bb5110e0",
+              "software_name": "ipython_genutils",
+              "software_version": "0.2.0"
+            },
+            {
+              "id": "d66506ff-75c2-4ed7-baef-d7e09aff39ef",
+              "software_name": "jedi",
+              "software_version": "0.18.0"
+            },
+            {
+              "id": "a63cdf41-ca6c-4279-bbb5-2d1e9eddbe8c",
+              "software_name": "Jinja2",
+              "software_version": "2.11.3"
+            },
+            {
+              "id": "6e2a163c-7433-4496-9f8c-f4ad37df1f3a",
+              "software_name": "kiwisolver",
+              "software_version": "1.3.1"
+            },
+            {
+              "id": "75387897-efc5-4c05-830c-e540fd30b309",
+              "software_name": "lazyarray",
+              "software_version": "0.5.2"
+            },
+            {
+              "id": "612c16b1-bda9-48d3-bd8e-ec6ee218ac31",
+              "software_name": "MarkupSafe",
+              "software_version": "1.1.1"
+            },
+            {
+              "id": "0f9adafe-49f3-4c6c-b6c3-d717ff57e501",
+              "software_name": "matplotlib",
+              "software_version": "3.3.4"
+            },
+            {
+              "id": "9d96abbd-d456-44f8-92d8-ac580bcbbef5",
+              "software_name": "matplotlib-inline",
+              "software_version": "0.1.6"
+            },
+            {
+              "id": "ac9cec4f-68e5-4c26-b985-2ae4f89c1600",
+              "software_name": "mock",
+              "software_version": "4.0.3"
+            },
+            {
+              "id": "7382d190-f040-4d6f-a99d-50bfda742638",
+              "software_name": "mpi4py",
+              "software_version": "3.0.3"
+            },
+            {
+              "id": "4aacfb0c-6a12-428f-b1ad-1e1572297c7e",
+              "software_name": "mpmath",
+              "software_version": "1.2.1"
+            },
+            {
+              "id": "75ee636b-c49d-4e0c-ab08-9f660e815261",
+              "software_name": "neo",
+              "software_version": "0.11.1"
+            },
+            {
+              "id": "66a91264-438c-44bf-88a1-6ae681ecb690",
+              "software_name": "nest-simulator",
+              "software_version": "3.3"
+            },
+            {
+              "id": "273ba29c-deb0-4c6c-9df6-8e09411bca8a",
+              "software_name": "NEURON",
+              "software_version": "8.1.0"
+            },
+            {
+              "id": "8abf6ef8-6a15-484e-9c25-0dfea6e84870",
+              "software_name": "nixio",
+              "software_version": "1.5.3"
+            },
+            {
+              "id": "2b88f385-ee5c-4a18-936d-8331b166a1a5",
+              "software_name": "nose",
+              "software_version": "1.3.7"
+            },
+            {
+              "id": "7c21dc8f-6b6c-41f8-83e7-7819245117a6",
+              "software_name": "numexpr",
+              "software_version": "2.7.2"
+            },
+            {
+              "id": "8f73068b-bb49-4bc1-9a43-4401a77be38c",
+              "software_name": "numpy",
+              "software_version": "1.19.5"
+            },
+            {
+              "id": "9f1f8646-267c-47f4-a760-3ec5da945b5b",
+              "software_name": "olefile",
+              "software_version": "0.46"
+            },
+            {
+              "id": "f7e3ff9a-6584-4147-a834-6545d51a04d0",
+              "software_name": "packaging",
+              "software_version": "23.0"
+            },
+            {
+              "id": "c9e3492a-e2e4-4fbb-b95a-f398ec079853",
+              "software_name": "parameters",
+              "software_version": "0.2.1"
+            },
+            {
+              "id": "435d05da-da28-4ccd-8be8-ae641b772c95",
+              "software_name": "parso",
+              "software_version": "0.8.1"
+            },
+            {
+              "id": "7c45a1bb-cac9-4c1d-902c-f3d2f41a0b8b",
+              "software_name": "pbr",
+              "software_version": "5.5.0"
+            },
+            {
+              "id": "21a29993-0496-4a7f-8260-8c756cdbedb8",
+              "software_name": "pexpect",
+              "software_version": "4.8.0"
+            },
+            {
+              "id": "dfd199c7-9ba5-4f71-9ad5-f39d6d31f31f",
+              "software_name": "pickleshare",
+              "software_version": "0.7.5"
+            },
+            {
+              "id": "7ea3c679-00c0-450a-97eb-d30226252377",
+              "software_name": "Pillow",
+              "software_version": "8.1.2"
+            },
+            {
+              "id": "d471f988-e450-4c94-8489-ac91a47fb494",
+              "software_name": "pkg_resources",
+              "software_version": "0.0.0"
+            },
+            {
+              "id": "8492e725-f57f-4526-beff-debc592e4aa6",
+              "software_name": "prompt-toolkit",
+              "software_version": "3.0.36"
+            },
+            {
+              "id": "7f3a5b4e-fb5a-4bbb-804b-13c7d664cf7c",
+              "software_name": "pure-eval",
+              "software_version": "0.2.2"
+            },
+            {
+              "id": "ba519767-e926-4167-ade0-8cb7ff8df3d8",
+              "software_name": "Pygments",
+              "software_version": "2.7.1"
+            },
+            {
+              "id": "20e436b8-6fc7-4a34-877e-c91f0a3985a5",
+              "software_name": "PyNN",
+              "software_version": "0.10.2.dev0"
+            },
+            {
+              "id": "5065fcb4-1e5d-44a2-acb8-ec71f792d56c",
+              "software_name": "pyparsing",
+              "software_version": "2.4.7"
+            },
+            {
+              "id": "f3b03f63-a733-47c4-a00c-9f0810fed2b9",
+              "software_name": "python-dateutil",
+              "software_version": "2.8.1"
+            },
+            {
+              "id": "f1af72a3-df41-492b-8a3b-494a4f58b354",
+              "software_name": "PyYAML",
+              "software_version": "5.3.1"
+            },
+            {
+              "id": "fc697a69-abbb-4002-ad54-55c96cdeb40b",
+              "software_name": "quantities",
+              "software_version": "0.14.0"
+            },
+            {
+              "id": "bb44f263-708a-43cf-8654-6aa7c7f4301a",
+              "software_name": "roman",
+              "software_version": "2.0.0"
+            },
+            {
+              "id": "de8ee866-f8b3-41a2-ab97-d1a6a126a076",
+              "software_name": "scipy",
+              "software_version": "1.6.0"
+            },
+            {
+              "id": "3497f68e-f136-48e4-97ee-1070b8c79d7c",
+              "software_name": "six",
+              "software_version": "1.16.0"
+            },
+            {
+              "id": "86ff41c6-a5d4-46a4-b13b-d1c152d963ce",
+              "software_name": "smmap",
+              "software_version": "5.0.0"
+            },
+            {
+              "id": "391c8f32-98f0-4bc9-bece-275faf6499bd",
+              "software_name": "stack-data",
+              "software_version": "0.6.2"
+            },
+            {
+              "id": "4c37df5c-bf9e-4d33-9c10-014dda090c25",
+              "software_name": "Sumatra",
+              "software_version": "0.7.4"
+            },
+            {
+              "id": "95f74888-b8cf-484c-aa2c-db976260ecee",
+              "software_name": "sympy",
+              "software_version": "1.11.1"
+            },
+            {
+              "id": "dfab1835-f23e-4b29-94b7-39f1d9982cb8",
+              "software_name": "tables",
+              "software_version": "3.6.1"
+            },
+            {
+              "id": "a7e616a9-317b-497c-8abd-277e7b0b6291",
+              "software_name": "traitlets",
+              "software_version": "5.0.5"
+            },
+            {
+              "id": "f25bcd5e-3c46-462b-9a09-2f6b3faba2f3",
+              "software_name": "wcwidth",
+              "software_version": "0.1.9"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-c0696e0110d40b2cdff569c7707439721c78c63a",
+          "executable": "python",
+          "arguments": [
+            "Brette-etal-2007-PyNN-v0.10.1/PyNN/VAbenchmarks.py",
+            "nest",
+            "CUBA"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-07T11:40:43.805373",
+        "end_time": "2023-03-07T11:40:51.200513",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 7.39514,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "simulation"
+      },
+      {
+        "id": "f9f9914a-3c15-4984-b025-2b1bc7e2bc50",
+        "input": [
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "127e0fe645f439a4f6d7883ee47b8b3ab942f9d7",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_brian2_np1_20230213-145841.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_brian2_np1_20230213-145841.pkl",
+            "size": 413195
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "f39b71e33a13a3b2f701f88d3bb8842bfbc41dfa",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_nest_np1_20230213-144543.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_nest_np1_20230213-144543.pkl",
+            "size": 489799
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "b76a8e0232ed0186412b3b4655f9e5152c3d4053",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_neuron_np1_20230213-144609.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_exc_neuron_np1_20230213-144609.pkl",
+            "size": 1117124
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "f012e759c3de3c32d9bc281d237c2a1abd817aa0",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_brian2_np1_20230213-145841.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_brian2_np1_20230213-145841.pkl",
+            "size": 63838
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "74b0a447f116cbf2c576edd8dc31d9674f7a2341",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_nest_np1_20230213-144543.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_nest_np1_20230213-144543.pkl",
+            "size": 81711
+          },
+          {
+            "description": "downloaded_data",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "c815e3d9d8619b95cfc46a45fea325b5cba10fda",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://data-proxy.ebrains.eu/api/v1/buckets/brette-etal-2007/Benchmark2/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_neuron_np1_20230213-144609.pkl",
+            "file_name": "downloads/PyNN/v0.10.1/VAbenchmarks_CUBA_inh_neuron_np1_20230213-144609.pkl",
+            "size": 224647
+          },
+          {
+            "description": "simulation_results",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "734c678973594048ee5fb074641c6c652a2f02db",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://Results/20230303/VAbenchmarks_CUBA_exc_nest_np1_20230214-140028.pkl",
+            "file_name": "Results/20230303/VAbenchmarks_CUBA_exc_nest_np1_20230214-140028.pkl",
+            "size": 489799
+          },
+          {
+            "description": "simulation_results",
+            "format": "application/vnd.pickle",
+            "hash": {
+              "value": "48bcbd72b38741d3413c5822358713220ed4719d",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://Results/20230303/VAbenchmarks_CUBA_inh_nest_np1_20230214-140028.pkl",
+            "file_name": "Results/20230303/VAbenchmarks_CUBA_inh_nest_np1_20230214-140028.pkl",
+            "size": 81711
+          }
+        ],
+        "output": [],
+        "environment": {
+          "id": "71db15bb-b6a9-4908-8fab-0467bacd7975",
+          "name": "docker-registry.ebrains.eu/reproducibility/cwl-workflows/compare_directories@sha256:???",
+          "hardware": "generic",
+          "configuration": {
+            "KernelVersion": "5.10.76-linuxkit",
+            "OperatingSystem": "Docker Desktop",
+            "OSType": "linux",
+            "Architecture": "aarch64",
+            "NCPU": 4,
+            "MemTotal": 4124364800
+          },
+          "software": [
+            {
+              "id": "4fcc2a98-e7c8-41d3-aa54-c3350ec0bd1e",
+              "software_name": "Python",
+              "software_version": "3.11.2"
+            },
+            {
+              "id": "714d65ff-478b-49b9-a3de-95bd9496f9d3",
+              "software_name": "click",
+              "software_version": "8.1.3"
+            }
+          ],
+          "description": "Docker container"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-d11cba82adc096992e3077eaa70a1011d566154c",
+          "executable": "python",
+          "arguments": [
+            "compare_directories.py",
+            "Results/20230306",
+            "downloads/PyNN/v0.10.1"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2023-03-07T11:40:51.216038",
+        "end_time": "2023-03-07T11:40:52.389222",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 1.173184,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "data analysis"
+      }
+    ],
+    "started_by": {
+      "given_name": "Andrew P.",
+      "family_name": "Davison",
+      "orcid": "https://orcid.org/0000-0002-4793-7541"
+    },
+    "recipe_id": null
+  },
+  {
+    "id": "f3b9d4a0-1b06-4362-8cb6-9587d0907de2",
+    "configuration": null,
+    "stages": [
+      {
+        "id": "f2c33a40-436d-4263-8cd9-9ad0b15018c7",
+        "input": [
+          {
+            "description": "Computes the PSD (Power Spectral Density) for every selected channel in the signal",
+            "format": "text/x-python",
+            "hash": {
+              "value": "80f6e6cbfa8337c2bcc068e346c9d39116a98603",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/blob/main/PSD_workflow_no_fetch/step1/analysis.py",
+            "file_name": "step1/analysis.py",
+            "size": 1375
+          },
+          {
+            "description": "arcp://uuid,b2020c9c-9e93-46c7-b87d-14078bd50247/workflow/packed.cwl#main/analysis/input_file",
+            "format": "application/5-mat",
+            "hash": {
+              "value": "495534ad6bc23e91b3db8df24ef86fdf23e5e232",
+              "algorithm": "SHA-1"
+            },
+            "location": "file://input/sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.mat",
+            "file_name": "sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.mat",
+            "size": 153765472
+          }
+        ],
+        "output": [
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/input_file",
+            "format": "application/json",
+            "hash": null,
+            "location": "file://psd.json",
+            "file_name": "psd.json",
+            "size": 3515921
+          }
+        ],
+        "environment": {
+          "id": "290ce259-b13d-45bb-91c5-461bbf9c76d2",
+          "name": "docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_analysis@sha256:6a9014185aa4a47729f301c78050fc562491e3b95ef91482fdb907bf9aec84c3",
+          "hardware": "generic",
+          "configuration": null,
+          "software": [
+            {
+              "id": "0cd58593-e215-45ba-8cd0-d5e667623a95",
+              "software_name": "cwltool",
+              "software_version": "3.1.20220224085855"
+            },
+            {
+              "id": "0d370fc3-db34-4d62-8f41-73533bf1c059",
+              "software_name": "Docker",
+              "software_version": "20.10.12"
+            },
+            {
+              "id": "d0a6fd31-e17f-4eca-9e09-08dabfd2b1f0",
+              "software_name": "Python",
+              "software_version": "3.9.7"
+            }
+          ],
+          "description": "Container execution of image docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_analysis:latest on Andrew Davison's MacBook Pro (14-inch, 2021)"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-771a0df0cf936ae156a7d9ac1574d74496c63886",
+          "executable": "python",
+          "arguments": [
+            "step1/analysis.py",
+            "input/sub-1_chs-32_hem-RH_ana-ISO000_stim-SPN.mat",
+            "--output_file psd.json",
+            "--channels 0 1 2 3 4"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2022-03-28T16:04:00.381279",
+        "end_time": "2022-03-28T16:06:42.421212",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 162.39933,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "demo",
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "data analysis"
+      },
+      {
+        "id": "7937f506-b17e-4530-83e7-80d71a2f4044",
+        "input": [
+          {
+            "description": "Plots the PSDs for selected channels of a signal together",
+            "format": "text/x-python",
+            "hash": {
+              "value": "4b7eef5db00d535457fa5b4002c3fa4e01fceb72",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/blob/main/PSD_workflow_no_fetch/step2/visualization.py",
+            "file_name": "step2/visualization.py",
+            "size": 1257
+          },
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/input_file",
+            "format": "application/json",
+            "hash": null,
+            "location": "file://psd.json",
+            "file_name": "psd.json",
+            "size": 3515921
+          }
+        ],
+        "output": [
+          {
+            "description": "arcp://uuid,f148bf52-a67f-49d3-8a30-ba4b6bec5f25/workflow/packed.cwl#main/visualization/plot",
+            "format": "image/png",
+            "hash": {
+              "value": "ec7ede9a48002ba61627ace37ae2b4dbba34b858",
+              "algorithm": "SHA-1"
+            },
+            "location": "https://drive.ebrains.eu/f/5e2f90de59ef4559813d/?dl=1",
+            "file_name": "output.png",
+            "size": 64935
+          }
+        ],
+        "environment": {
+          "id": "708d3983-1e78-49a1-bf06-e3d0f7ebd78d",
+          "name": "docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_visualization",
+          "hardware": "generic",
+          "configuration": null,
+          "software": [
+            {
+              "id": "0cd58593-e215-45ba-8cd0-d5e667623a95",
+              "software_name": "cwltool",
+              "software_version": "3.1.20220224085855"
+            },
+            {
+              "id": "0d370fc3-db34-4d62-8f41-73533bf1c059",
+              "software_name": "Docker",
+              "software_version": "20.10.12"
+            },
+            {
+              "id": "d0a6fd31-e17f-4eca-9e09-08dabfd2b1f0",
+              "software_name": "Python",
+              "software_version": "3.9.7"
+            }
+          ],
+          "description": "Container execution of image docker-registry.ebrains.eu/tc/cwl-workflows/psd_workflow_visualization"
+        },
+        "launch_config": {
+          "description": null,
+          "name": "LaunchConfiguration-a5e8e8d702274e0f5c3053b703fce4b31b728f12",
+          "executable": "python",
+          "arguments": [
+            "step2/visualization.py",
+            "psd.json",
+            "--output_file output.png",
+            "--channels 0 1 2 3 4"
+          ],
+          "environment_variables": null
+        },
+        "start_time": "2022-03-28T16:06:42.433013",
+        "end_time": "2022-03-28T16:07:07.786379",
+        "started_by": {
+          "given_name": "Andrew P.",
+          "family_name": "Davison",
+          "orcid": "https://orcid.org/0000-0002-4793-7541"
+        },
+        "status": "completed",
+        "resource_usage": [
+          {
+            "value": 25,
+            "units": "second"
+          }
+        ],
+        "tags": [
+          "demo",
+          "cwl"
+        ],
+        "description": null,
+        "recipe_id": null,
+        "type": "visualization"
+      }
+    ],
+    "started_by": {
+      "given_name": "Andrew P.",
+      "family_name": "Davison",
+      "orcid": "https://orcid.org/0000-0002-4793-7541"
+    },
+    "recipe_id": "24b44ee2-2594-4c7b-ad3c-e1498d219f22"
+  }
+]
