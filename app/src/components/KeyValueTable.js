@@ -1,3 +1,4 @@
+import { isValidElement } from "react";
 import {
   Paper,
   Table,
@@ -21,9 +22,12 @@ function KeyValueTable(props) {
   console.log(props.data);
   if (props.data) {
     for (const [key, value] of Object.entries(props.data)) {
-      let valueStr = String(value);
-      if (Array.isArray(value)) {
-        valueStr = value.join(", ");
+      let valueStr = value;
+      if (!isValidElement(value)) { // allow passing JSX as values
+        let valueStr = String(value);
+        if (Array.isArray(value)) {
+          valueStr = value.join(", ");
+        }
       }
 
       rows.push(
