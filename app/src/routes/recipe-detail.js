@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { Button, Paper, Typography } from "@mui/material";
 import { FormatListBulleted as List } from "@mui/icons-material";
+import ReactMarkdown from "react-markdown";
 import { datastore } from "../datastore";
 import { getDevelopersString } from "../utils";
 import Navigation from "../components/Navigation";
@@ -33,16 +34,27 @@ function Workflow() {
         <Typography variant="caption" gutterBottom display="block">
           <b>Recipe ID:</b> {recipe.id}
         </Typography>
-        <Button variant="outlined" startIcon={<List />} href={recipe.location} target="_blank">
+        <Button
+          variant="outlined"
+          startIcon={<List />}
+          href={recipe.location}
+          target="_blank"
+        >
           View recipe definition
         </Button>
-
       </Paper>
 
-      <Paper sx={{ padding: 2, margin: 1}}>
-        <Typography variant="body2">{recipe.description}</Typography>
+      <Paper sx={{ padding: 2, margin: 1 }}>
+        <ReactMarkdown
+          components={{
+            h1: "h2",
+            h2: "h3",
+            h3: "h4",
+          }}
+        >
+          {recipe.description}
+        </ReactMarkdown>
       </Paper>
-
     </div>
   );
 }
