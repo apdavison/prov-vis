@@ -1,10 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 function FileContentDisplay(props) {
 
@@ -14,7 +9,7 @@ function FileContentDisplay(props) {
     //console.log("Getting workflow data")
     if (props.format.startsWith("text")) {
       // todo: only download files under a certain size
-      axios.get(props.location)
+      fetch(props.location)
       .then(res => {
         setContent(res);
       })
@@ -22,7 +17,7 @@ function FileContentDisplay(props) {
         setContent("The contents of this file could not be displayed, authentication may be required");
       })
     }
-  }, []);
+  }, [props.format, props.location]);
 
   if (props.format.startsWith("image")) {
     return <img src={props.location} alt={props.alt} />

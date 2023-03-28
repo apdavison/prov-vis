@@ -1,8 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, Typography } from "@mui/material";
 
 
 const colours = {
@@ -55,21 +52,16 @@ function getFileExtension(url) {
 function Stage(props) {
     const width = props.size.width;
     const height = props.size.height;
-    const useStyles = makeStyles({
-        root: {
+    const styles = {
             top: props.y - height/2 + "px",
             left: props.x - width/2 + "px",
             width: width + "px",
             height: height + "px",
             backgroundColor: colours[props.type],
             position: "absolute"
-        }
-      });
-    const classes = useStyles();
-    //console.log("Stage");
-    //console.log(props);
+    };
     return (
-        <Card id="stage{props.label}" className={classes.root}>
+        <Card id="stage{props.label}" sx={styles}>
             <CardContent>
                 <Typography variant="overline" gutterBottom>
                     {formatType(props.metadata.type)}

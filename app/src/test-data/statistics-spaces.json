@@ -1,0 +1,62 @@
+[
+  {
+    "space": "myspace",
+    "count": 0
+  },
+  {
+    "space": "collab-basal-ganglia-validation",
+    "count": 0
+  },
+  {
+    "space": "collab-ebrains-workflows",
+    "count": 0
+  },
+  {
+    "space": "collab-hiballwinterschool-2023-ebrains-tutorial",
+    "count": 0
+  },
+  {
+    "space": "collab-live-paper-2022-appukuttan-davison",
+    "count": 0
+  },
+  {
+    "space": "collab-model-validation",
+    "count": 0
+  },
+  {
+    "space": "collab-neuron-copies",
+    "count": 0
+  },
+  {
+    "space": "collab-nwb-data-sharing-pipeline",
+    "count": 0
+  },
+  {
+    "space": "collab-poc-workflows",
+    "count": 2
+  },
+  {
+    "space": "collab-provenance-api-development",
+    "count": 2
+  },
+  {
+    "space": "collab-software-curation",
+    "count": 0
+  },
+  {
+    "space": "collab-tier-3-data-curation",
+    "count": 0
+  },
+  {
+    "space": "collab-tvb-curation",
+    "count": 0
+  },
+  {
+    "space": "collab-validation-framework-testing",
+    "count": 0
+  },
+  {
+    "space": "computation",
+    "count": 0
+  }
+]

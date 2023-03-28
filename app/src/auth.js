@@ -15,8 +15,8 @@ export default function initAuth(main) {
     console.log('DOM content is loaded, initialising Keycloak client...');
     keycloak
         .init({ flow: 'implicit' })
-        .success(() => checkAuth(main))
-        .error(console.log);
+        .then(() => checkAuth(main))
+        .catch(console.log);
 }
 
 
@@ -55,6 +55,7 @@ function checkAuth(main) {
         }
         if (isAuthenticated) {
             console.log('...which is authenticated, starting business logic...');
+            sessionStorage.setItem("token", keycloak.token);
             return main(keycloak);
         }
     }

@@ -1,0 +1,351 @@
+[
+  {
+    "id": "24b44ee2-2594-4c7b-ad3c-e1498d219f22",
+    "name": "PSD (Power Spectral Density) Calculation Workflow with local copy of input file",
+    "alias": "PSD_workflow_no_fetch",
+    "custodians": [
+      {
+        "given_name": "Eleni",
+        "family_name": "Mathioulaki",
+        "orcid": null
+      }
+    ],
+    "description": "# PSD (Power Spectral Density) Calculation Workflow\n\nThis is a CWL workflow consisting of 2 steps (tools).\n\n#### Step 1: analysis_tool.cwl (analysis.py)\ncalculates the PSD (Power Spectral Density) of all the selected channels of a signal\n\ninput:\n- input file containing the signal (public link provided by Bucket)\n- output file preferred name\n- selected channels\n\noutput:\n- file containing the PSDs of the selected channels\n\n#### Step 2: visualization_tool.cwl (visualization.py)\nplots the PSDs for selected channels of a signal together\n\ninput:\n- input file containing the PSDs\n- output file (plot) preferred name\n- selected channels\n\noutput:\n- produced plot\n\n",
+    "developers": [
+      {
+        "given_name": "Eleni",
+        "family_name": "Mathioulaki",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/tree/main/PSD_workflow",
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows",
+    "version_identifier": "e342f813",
+    "version_innovation": null
+  },
+  {
+    "id": "ebe9cae4-7d28-4655-800b-530094293453",
+    "name": "Push a folder to an EBRAINS Collaboratory Bucket",
+    "alias": "bucket-push-file-sc3-vf778dc8f",
+    "custodians": [
+      {
+        "given_name": "Eleni",
+        "family_name": "Mathioulaki",
+        "orcid": null
+      }
+    ],
+    "description": "This workflow stage uploads/pushes all the files in a given folder to a bucket (file storage) in the EBRAINS Collaboratory.",
+    "developers": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      },
+      {
+        "given_name": "Eleni",
+        "family_name": "Mathioulaki",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/standardised-workflows/sc3_cwl/-/blob/f778dc8fb08f4757ec97ee64dcbb0ec28852a14c/steps/bucket_push_file.cwl",
+    "version_identifier": "sc3-vf778dc8f",
+    "version_innovation": "This version was demonstrated at the HBP Summit 2023."
+  },
+  {
+    "id": "bf783996-2657-4a74-ba8d-185e0656dab6",
+    "name": "Check whether two directories contain the same files",
+    "alias": "compare_directories-v0.1",
+    "custodians": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "description": null,
+    "developers": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/CommandLineTools/compare_directories",
+    "keywords": null,
+    "location": null,
+    "version_identifier": "v0.1",
+    "version_innovation": null
+  },
+  {
+    "id": "a2c18b3b-8455-497e-aa8a-126a5d40bc40",
+    "name": "Download the data for a dataset identified by an EBRAINS KnowledgeGraph UUID.",
+    "alias": "download_kg_dataset-v0.1",
+    "custodians": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "description": null,
+    "developers": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/CommandLineTools/download_KG_dataset",
+    "version_identifier": "v0.1",
+    "version_innovation": null
+  },
+  {
+    "id": "1768d516-7a10-4407-85cf-fef43dc5a680",
+    "name": "Download the code for a model identified by an EBRAINS KnowledgeGraph UUID",
+    "alias": "download_kg_model-v0.1",
+    "custodians": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "description": null,
+    "developers": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/CommandLineTools/download_KG_model",
+    "version_identifier": "v0.1",
+    "version_innovation": null
+  },
+  {
+    "id": "f374525f-4565-4914-9e79-07189cb68740",
+    "name": "HBP Showcase 3: Plot results",
+    "alias": "hbp-sc3-plot-results-vf778dc8f",
+    "custodians": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      }
+    ],
+    "description": "This stage plots the simulation results generated by \"HBP Showcase 3: Run simulation\".\n\n(More description here - ask Arnau).",
+    "developers": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/standardised-workflows/sc3_cwl/-/blob/f778dc8fb08f4757ec97ee64dcbb0ec28852a14c/steps/plot_results.cwl",
+    "version_identifier": "vf778dc8f",
+    "version_innovation": "This version was demonstrated at the HBP Summit 2023."
+  },
+  {
+    "id": "27731e10-728b-4e5d-8149-4a9010c1ffdc",
+    "name": "HBP Showcase 3: Run simulation",
+    "alias": "hbp-sc3-run-simulation-vf778dc8f",
+    "custodians": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      }
+    ],
+    "description": "description of this stage goes here (ask Arnau)",
+    "developers": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      },
+      {
+        "given_name": "Lionel",
+        "family_name": "Kusch",
+        "orcid": null
+      },
+      {
+        "given_name": "Núria",
+        "family_name": "Tort-Colet",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/standardised-workflows/sc3_cwl/-/blob/f778dc8fb08f4757ec97ee64dcbb0ec28852a14c/steps/run_simulation.cwl",
+    "version_identifier": "vf778dc8f",
+    "version_innovation": "This version was demonstrated at the HBP Summit 2023."
+  },
+  {
+    "id": "bd71c7c0-c2bb-454a-8d18-12ef96f45cdd",
+    "name": "HBP Showcase 3: Workflow",
+    "alias": "hbp-sc3-workflow-vf778dc8f",
+    "custodians": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      }
+    ],
+    "description": "This is a CWL workflow consisting of 3 stages. The workflow builds and executes an AdEx mean-field TVB model, plots the results and pushes these results to an EBRAINS Collab Bucket\n\nPre-defined inputs can be found in the workflow_info.yml file.\n\n## Inputs \n-  **bvals**: adaptation values\n-  **simname**: label for each of the **bvals** \n-  **output\\_dir\\_name**: name of the output directory where to store the results\n-  **run\\_sim**: total time of the simulation (in ms)\n-  **cut\\_transient**: transient time (in ms) to cut from the simulation\n-  **token**: user's token for the data proxy (`clb_oauth.get_token()`)\n-  **bucket\\_id**: Your bucket id. You should have read and write access to that Bucket \n-  **folder\\_root** and **synch\\_root**: auxiliary folders, they should not be changed and should be left as 'result' and 'synch' respectively\n\n## Outputs\n- **fig\\_PSD.png**: final plot containing the PSD of the simulated traces for all nodes under given conditions\n- **fig\\_traces.png**: final plot containing the traces of the simulation for all nodes under given conditions\n\n## Steps\n\n### Step 1: Running Simulation\n\nRuns the simulation of the TVB model\n\n### Step 2: Plotting Results\n\nPlots the results from the simulations\n\n### Step 3: Pushing files to bucket\n\nPushes the figure to the given Collab Bucket",
+    "developers": [
+      {
+        "given_name": "Arnau",
+        "family_name": "Manasanch",
+        "orcid": null
+      },
+      {
+        "given_name": "Núria",
+        "family_name": "Tort-Colet",
+        "orcid": null
+      },
+      {
+        "given_name": "Lionel",
+        "family_name": "Kusch",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": "https://gitlab.ebrains.eu/technical-coordination/project-internal/standardised-workflows/sc3_cwl",
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/standardised-workflows/sc3_cwl/-/tree/f778dc8fb08f4757ec97ee64dcbb0ec28852a14c",
+    "version_identifier": "vf778dc8f",
+    "version_innovation": "This version was demonstrated at the HBP Summit 2023."
+  },
+  {
+    "id": "06cd43c9-32b7-465f-b93c-fdc54977dcc8",
+    "name": "PSD (Power Spectral Density) Calculation Workflow with input file from Knowledge Graph",
+    "alias": "PSD_workflow_KG",
+    "custodians": [
+      {
+        "given_name": "Sofia",
+        "family_name": "Karvounari",
+        "orcid": null
+      }
+    ],
+    "description": "# PSD (Power Spectral Density) Calculation Workflow\n\nThis is a CWL workflow consisting of 2 steps (tools).\n\n#### Step 1: analysis_tool.cwl (analysis.py)\ncalculates the PSD (Power Spectral Density) of all the selected channels of a signal\n\ninput:\n- input file containing a .smr file found in Knowledge Graph (location link in Object Storage at CSCS)\n- output file preferred name\n- output file (plot) preferred name\n- selected channels\n\noutput:\n- produced plot\n\n\n#### Step 2: visualization_tool.cwl (visualization.py)\n\nplots the PSDs for selected channels of a signal together\n\ninput:\n- input file containing the PSDs\n- output file (plot) preferred name\n- selected channels\n\noutput:\n- produced plot\n",
+    "developers": [
+      {
+        "given_name": "Sofia",
+        "family_name": "Karvounari",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows",
+    "version_identifier": "1b13278f",
+    "version_innovation": null
+  },
+  {
+    "id": "a82216ef-842e-4e41-8b74-72739ae0282e",
+    "name": "PSD (Power Spectral Density) Calculation Workflow with input file from Knowledge Graph",
+    "alias": "PSD_workflow_KG cleaned",
+    "custodians": [
+      {
+        "given_name": "Sofia",
+        "family_name": "Karvounari",
+        "orcid": null
+      }
+    ],
+    "description": "# PSD (Power Spectral Density) Calculation Workflow\n\nThis is a CWL workflow consisting of 2 steps (tools).\n\n#### Step 1: analysis_tool.cwl (analysis.py)\ncalculates the PSD (Power Spectral Density) of all the selected channels of a signal\n\ninput:\n- input file containing a .smr file found in Knowledge Graph (location link in Object Storage at CSCS)\n- output file preferred name\n- output file (plot) preferred name\n- selected channels\n\noutput:\n- produced plot\n\n\n#### Step 2: visualization_tool.cwl (visualization.py)\n\nplots the PSDs for selected channels of a signal together\n\ninput:\n- input file containing the PSDs\n- output file (plot) preferred name\n- selected channels\n\noutput:\n- produced plot",
+    "developers": [
+      {
+        "given_name": "Sofia",
+        "family_name": "Karvounari",
+        "orcid": null
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/technical-coordination/project-internal/workflows/cwl-workflows/-/tree/main/Workflows/PSD_workflow_smr_push_results_1",
+    "version_identifier": "1b13278f",
+    "version_innovation": null
+  },
+  {
+    "id": "2c4f3cd8-335d-49b7-b001-c8600ed49cac",
+    "name": "Run a simulation script written in Python",
+    "alias": "run_python_simulation-v0.1",
+    "custodians": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "description": null,
+    "developers": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": null,
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/CommandLineTools/run_python_simulation",
+    "version_identifier": "v0.1",
+    "version_innovation": null
+  },
+  {
+    "id": "3baadd82-bd19-4554-97b0-10e0f3000241",
+    "name": "Simple model verification",
+    "alias": "simple-model-verification-v0.1",
+    "custodians": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "description": "- Download a model from the KG\n- Download a reference dataset for that model (results of previous simulation)\n- Run new simulation\n- Compare new results with previous results",
+    "developers": [
+      {
+        "given_name": "Andrew P.",
+        "family_name": "Davison",
+        "orcid": "https://orcid.org/0000-0002-4793-7541"
+      }
+    ],
+    "type": null,
+    "full_documentation": null,
+    "homepage": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/Workflows/simulate_KG_model",
+    "keywords": null,
+    "location": "https://gitlab.ebrains.eu/workflows/public-workflows/-/tree/main/CommandLineTools/compare_directories",
+    "version_identifier": "v0.1",
+    "version_innovation": null
+  }
+]
