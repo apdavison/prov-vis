@@ -30,6 +30,10 @@ function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
+function isAlmostEmpty(obj) {
+  return Object.keys(obj).length <= 1;
+}
+
 function byDate(obj1, obj2) {
   // most recent first
   if (obj1.stages[0].start_time < obj2.stages[0].start_time) {
@@ -70,7 +74,9 @@ class DataStore {
       return workflows;
     }
 
-    if (isEmpty(this.cache.workflows)) {
+    if (isAlmostEmpty(this.cache.workflows)) {
+      // if the cache is empty or contains a single item
+      // we probably need to get all workflows
       console.log(baseUrl);
       let url = baseUrl + "/workflows/";
       if (collabSpace) {
@@ -148,7 +154,7 @@ class DataStore {
       return recipes;
     }
 
-    if (isEmpty(this.cache.recipes)) {
+    if (isAlmostEmpty(this.cache.recipes)) {
       console.log(baseUrl);
       let url = baseUrl + "/recipes/";
       if (collabSpace) {
