@@ -1,122 +1,34 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { ZoomIn, FormatListBulleted as List } from "@mui/icons-material";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Await, defer, useLoaderData } from "react-router-dom";
 
 import { datastore } from "../datastore";
-import { getDevelopersString } from "../utils";
 import Navigation from "../components/Navigation";
+import RecipeTable from "../components/RecipeTable";
+import ProgressIndicator from "../components/ProgressIndicator";
 
 export async function loader() {
-  const recipes = await datastore.getRecipes(null, {});
-  console.log(recipes);
-  return { recipes };
+  const recipesPromise = datastore.getRecipes(null, {});
+  //console.log(recipesPromise);
+  return defer({ recipes: recipesPromise });
 }
 
-function Workflows(props) {
-  const { recipes } = useLoaderData();
-  const [typeFilter, setTypeFilter] = React.useState("");
-
-  let availableTypeFilters = new Set();
-  recipes.forEach((recipe) => {
-    if (recipe.type) {
-      availableTypeFilters.add(recipe.type);
-    } else {
-      recipe.type = "unknown";
-    }
-  });
-  availableTypeFilters = Array.from(availableTypeFilters);
-  console.log(availableTypeFilters);
-
-  const handleChange = (event) => {
-    setTypeFilter(event.target.value);
-  };
-  console.log(recipes);
-
-  const filterByType = (item) => {
-    if (typeFilter) {
-      return item.type === typeFilter;
-    } else {
-      return true;
-    }
-  }
+function Recipes(props) {
+  const data = useLoaderData();
 
   return (
     <div id="recipes">
       <Navigation location={["Recipes"]} />
 
-      <Stack direction="row" spacing={2} justifyContent="flex-end">
-        <FormControl sx={{ m: 1, minWidth: 240 }} size="small">
-          <InputLabel id="select-type-filter">Filter by type</InputLabel>
-          <Select
-            labelId="select-type-filter"
-            id="select-type-filter"
-            value={typeFilter}
-            label="Filter by type"
-            onChange={handleChange}
-          >
-            <MenuItem value=""><em>Show all</em></MenuItem>
-            {availableTypeFilters.map((name) => <MenuItem value={name}>{name}</MenuItem>)}
-          </Select>
-        </FormControl>
-      </Stack>
-
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="list of workflow recipes">
-          <TableHead>
-            <TableRow sx={{ bgcolor: "#dddddd" }}>
-              <TableCell></TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Authors</TableCell>
-              <TableCell>Definition</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {recipes.filter(filterByType).map((recipe) => (
-              <TableRow
-                key={recipe.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell>
-                  <Link to={recipe.id}>
-                    <ZoomIn />
-                  </Link>
-                </TableCell>
-                <TableCell>{recipe.name}</TableCell>
-                <TableCell>{recipe.type || "unknown"}</TableCell>
-                <TableCell>{getDevelopersString(recipe.developers)}</TableCell>
-                <TableCell>
-                  <Button
-                    variant="outlined"
-                    startIcon={<List />}
-                    href={recipe.location}
-                    target="_blank"
-                  >
-                    View recipe definition
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <React.Suspense fallback={<ProgressIndicator />}>
+        <Await
+          resolve={data.recipes}
+          errorElement={<p>Error loading workflow recipes.</p>}
+        >
+          {(recipes) => <RecipeTable recipes={recipes} />}
+        </Await>
+      </React.Suspense>
     </div>
   );
 }
 
-export default Workflows;
+export default Recipes;
