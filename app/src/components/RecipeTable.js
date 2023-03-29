@@ -74,6 +74,7 @@ function RecipeTable(props) {
               <TableCell>Type</TableCell>
               <TableCell>Authors</TableCell>
               <TableCell>Definition</TableCell>
+              <TableCell>Collab</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -102,6 +103,7 @@ function RecipeTable(props) {
                     View recipe definition
                   </Button>
                 </TableCell>
+                <TableCell>{recipe.project_id}</TableCell>
               </TableRow>
             ))}
           </TableBody>

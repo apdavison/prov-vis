@@ -29,7 +29,7 @@ function Workflow() {
           {getRecipeName(workflow.recipe)}
         </Typography>
         <Typography variant="caption">
-          <b>Run ID:</b> {workflow.id}
+          <b>Run ID:</b> {workflow.id} <b>Collab:</b> {workflow.project_id}
         </Typography>
         <Typography variant="subtitle2" gutterBottom>
           Started by {fullName(workflow.started_by)} on{" "}

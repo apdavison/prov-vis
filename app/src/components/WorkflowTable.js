@@ -30,6 +30,7 @@ function WorkflowTable(props) {
             <TableCell>Timestamp</TableCell>
             <TableCell align="left">Recipe</TableCell>
             <TableCell>Run by</TableCell>
+            <TableCell>Collab</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,6 +47,7 @@ function WorkflowTable(props) {
               <TableCell>{getTimeStamp(workflow.stages)}</TableCell>
               <TableCell>{getRecipeName(workflow.recipe)}</TableCell>
               <TableCell>{fullName(workflow.started_by)}</TableCell>
+              <TableCell>{workflow.project_id}</TableCell>
             </TableRow>
           ))}
         </TableBody>
