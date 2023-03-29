@@ -32,7 +32,7 @@ function Workflow() {
           {getDevelopersString(recipe.developers)}
         </Typography>
         <Typography variant="caption" gutterBottom display="block">
-          <b>Recipe ID:</b> {recipe.id}
+          <b>Type:</b> {recipe.type} <b>Recipe ID:</b> {recipe.id}
         </Typography>
         <Button
           variant="outlined"
