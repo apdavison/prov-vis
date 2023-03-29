@@ -19,12 +19,11 @@ function KeyValueTable(props) {
   }
 
   let rows = [];
-  console.log(props.data);
   if (props.data) {
     for (const [key, value] of Object.entries(props.data)) {
       let valueStr = value;
       if (!isValidElement(value)) { // allow passing JSX as values
-        let valueStr = String(value);
+        valueStr = String(value);
         if (Array.isArray(value)) {
           valueStr = value.join(", ");
         }

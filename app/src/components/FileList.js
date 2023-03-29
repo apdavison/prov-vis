@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   IconButton,
-  Link,
   Paper,
   Table,
   TableHead,
@@ -30,7 +29,7 @@ function getHashStr(hashObj) {
 }
 
 function getDownloadButton(url) {
-  if (url.startsWith("http")) {
+  if (url && url.startsWith("http")) {
     return (
       <IconButton size="small" aria-label="download" href={url} target="_blank">
         <FileDownload />
@@ -42,7 +41,7 @@ function getDownloadButton(url) {
 }
 
 function getPreviewButton(url, format, onClick) {
-  if (url.startsWith("http") && supportedPreviewFormats.includes(format)) {
+  if (url && url.startsWith("http") && supportedPreviewFormats.includes(format)) {
     return (
       <IconButton size="small" aria-label="preview" onClick={onClick}>
         <Visibility />
@@ -61,6 +60,7 @@ function FileList(props) {
   for (const index in props.files) {
     const file = props.files[index];
     if (
+      file.location &&
       file.location.startsWith("http") &&
       supportedPreviewFormats.includes(file.format)
     ) {
@@ -72,7 +72,6 @@ function FileList(props) {
     setCurrentPreview(file);
     setOpenPreview(true);
   }
-
 
   return (
     <div>
@@ -97,7 +96,9 @@ function FileList(props) {
                 <TableCell>{file.file_name}</TableCell>
                 <TableCell>{getDownloadButton(file.location)}</TableCell>
                 <TableCell>
-                  {getPreviewButton(file.location, file.format, () => handleOpenPreview(file))}
+                  {getPreviewButton(file.location, file.format, () =>
+                    handleOpenPreview(file)
+                  )}
                 </TableCell>
                 <TableCell>{file.format}</TableCell>
                 <TableCell>{getHashStr(file.hash)}</TableCell>
@@ -108,14 +109,13 @@ function FileList(props) {
         </Table>
       </TableContainer>
 
-        <Preview
-          open={openPreview}
-          onClose={() => setOpenPreview(false)}
-          format={currentPreview.format}
-          fileName={currentPreview.file_name}
-          location={currentPreview.location}
-        />
-
+      <Preview
+        open={openPreview}
+        onClose={() => setOpenPreview(false)}
+        format={currentPreview.format}
+        fileName={currentPreview.file_name}
+        location={currentPreview.location}
+      />
     </div>
   );
 }
