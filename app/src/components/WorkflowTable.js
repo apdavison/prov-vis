@@ -10,13 +10,18 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { fullName, getTimeStamp } from "../utils";
+import { fullName, getTimeStamp, getRecipeName } from "../utils";
 
-function getRecipeName(recipe) {
-  if (recipe) {
-    return <a href={recipe.location}>{recipe.name}</a>;
+function RecipeLink(props) {
+  const recipe_name = getRecipeName(props.recipe);
+  if (props.recipe) {
+    return (
+      <Link to={`/recipes/${props.recipe.id}`}>
+        {getRecipeName(props.recipe)}
+      </Link>
+    );
   } else {
-    return "";
+    return recipe_name;
   }
 }
 
@@ -45,7 +50,9 @@ function WorkflowTable(props) {
                 </Link>
               </TableCell>
               <TableCell>{getTimeStamp(workflow.stages)}</TableCell>
-              <TableCell>{getRecipeName(workflow.recipe)}</TableCell>
+              <TableCell>
+                <RecipeLink recipe={workflow.recipe} />
+              </TableCell>
               <TableCell>{fullName(workflow.started_by)}</TableCell>
               <TableCell>{workflow.project_id}</TableCell>
             </TableRow>
