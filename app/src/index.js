@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Avatar, CssBaseline, AppBar, Toolbar, Typography, Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { green } from '@mui/material/colors';
 
 import "./index.css";
 import { datastore } from "./datastore";
@@ -29,6 +30,9 @@ const theme = createTheme({
     }
   },
   palette: {
+    primary: {
+      main: green[700],
+    },
     background: {
       default: "#f7f7f7"
     }
