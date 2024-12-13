@@ -45,6 +45,16 @@ function byDate(obj1, obj2) {
   return 0;
 }
 
+function byName(obj1, obj2) {
+  if (obj1.name > obj2.name) {
+    return 1;
+  }
+  if (obj1.name < obj2.name) {
+    return -1;
+  }
+  return 0;
+}
+
 class DataStore {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
@@ -177,7 +187,7 @@ class DataStore {
     console.log(this.cache.recipes);
     const recipeArray = Object.values(this.cache.recipes);
     console.log(recipeArray);
-    return recipeArray
+    return recipeArray.sort(byName);
   }
 
   async getRecipe(recipeId) {
