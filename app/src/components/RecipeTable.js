@@ -71,6 +71,7 @@ function RecipeTable(props) {
             <TableRow sx={{ bgcolor: "#dddddd" }}>
               <TableCell></TableCell>
               <TableCell>Name</TableCell>
+              <TableCell>Version</TableCell>
               <TableCell>Type</TableCell>
               <TableCell>Authors</TableCell>
               <TableCell>Definition</TableCell>
@@ -91,6 +92,7 @@ function RecipeTable(props) {
                   </Link>
                 </TableCell>
                 <TableCell>{recipe.name}</TableCell>
+                <TableCell>{recipe.version_identifier}</TableCell>
                 <TableCell>{recipe.type || "unknown"}</TableCell>
                 <TableCell>{getDevelopersString(recipe.developers)}</TableCell>
                 <TableCell>
