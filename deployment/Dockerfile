@@ -2,7 +2,7 @@
 # as it contains only the final built app
 
 # build environment
-FROM docker-registry.ebrains.eu/neuralactivity/node:20-alpine as build
+FROM docker-registry.ebrains.eu/neuralactivity/node:22-alpine as build
 
 WORKDIR /prov-vis-app
 ENV PATH /prov-vis-app/node_modules/.bin:$PATH
@@ -17,6 +17,6 @@ RUN npm run build
 FROM docker-registry.ebrains.eu/neuralactivity/nginx:stable-alpine
 
 COPY deployment/nginx-app.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /prov-vis-app/build /usr/share/nginx/html/prov-vis-app
+COPY --from=dist /prov-vis-app/build /usr/share/nginx/html/prov-vis-app
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

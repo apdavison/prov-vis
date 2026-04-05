@@ -82,7 +82,7 @@ function renderApp(auth) {
         <CssBaseline />
         <AppBar position="relative" sx={{ backgroundImage: "linear-gradient(to right, #00395d, #5cc766)"}} >
           <Toolbar>
-            <Avatar sx={{ mr: 2 }} alt="EBRAINS" src={process.env.PUBLIC_URL + "/favicon.png"} />
+            <Avatar sx={{ mr: 2 }} alt="EBRAINS" src="/favicon.png" />
             <Typography variant="h6" color="inherit" noWrap>
               EBRAINS: workflow provenance (alpha)
             </Typography>
@@ -100,4 +100,3 @@ function renderApp(auth) {
 
 
 window.addEventListener('DOMContentLoaded', () => initAuth(renderApp));
-//window.addEventListener('DOMContentLoaded', () => renderApp(null));
