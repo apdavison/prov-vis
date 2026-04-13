@@ -2,8 +2,6 @@ import { USE_TEST_DATA, baseUrl } from "./globals";
 import testDataWorkflows from "./test-data/workflows.json";
 import testDataRecipes from "./test-data/recipes.json";
 
-console.log(testDataRecipes);
-
 
 // Stuff for making test data behave more like real data
 
@@ -102,16 +100,12 @@ class DataStore {
       const response = await fetch(url, config);
       const workflows = await response.json()
       console.log(workflows);
-      let promises = [];
-      workflows.forEach(async workflow => {
-        if (workflow.recipe_id) {
-          //workflow.recipe = await this.getRecipe(workflow.recipe_id)
-          promises.push(this.getRecipe(workflow.recipe_id));
-        }
-      })
-      const recipes = await Promise.all(promises);
+      const uniqueRecipeIds = [...new Set(
+        workflows.filter(w => w.recipe_id).map(w => w.recipe_id)
+      )];
+      await Promise.all(uniqueRecipeIds.map(id => this.getRecipe(id)));
       for (const index in workflows) {
-        workflows[index].recipe = recipes[index];
+        workflows[index].recipe = this.cache.recipes[workflows[index].recipe_id] || null;
         this.cache.workflows[workflows[index].id] = workflows[index];
       }
     }
@@ -165,7 +159,6 @@ class DataStore {
     }
 
     if (isAlmostEmpty(this.cache.recipes)) {
-      console.log(baseUrl);
       let url = baseUrl + "/recipes/";
       if (collabSpace) {
         searchFilters.space = collabSpace;
@@ -179,12 +172,10 @@ class DataStore {
       //return axios.get(url, config)
       const response = await fetch(url, config);
       const recipes = await response.json()
-      console.log(recipes);
       for (const index in recipes) {
         this.cache.recipes[recipes[index].id] = recipes[index];
       }
     }
-    console.log(this.cache.recipes);
     const recipeArray = Object.values(this.cache.recipes);
     console.log(recipeArray);
     return recipeArray.sort(byName);
@@ -209,7 +200,17 @@ class DataStore {
       const config = this.get_request_config();
       console.log("Getting workflow recipe from " + url);
       //return axios.get(url, config)
-      const response = await fetch(url, config);
+      let response;
+      try {
+        response = await fetch(url, config);
+      } catch (e) {
+        console.warn(`Failed to fetch recipe ${recipeId}:`, e);
+        return null;
+      }
+      if (!response.ok) {
+        console.warn(`Failed to fetch recipe ${recipeId}: ${response.status}`);
+        return null;
+      }
       this.cache.recipes[recipeId] = await response.json();
     }
     console.log(this.cache.recipes[recipeId]);

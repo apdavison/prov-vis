@@ -2,15 +2,15 @@ import { Link, Typography, Toolbar, Breadcrumbs } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 
-function getBreadcrumb(item) {
+function getBreadcrumb(item, index) {
   if (item.path) {
     return (
-      <LinkRouter underline="hover" color="inherit" to={item.path} >
+      <LinkRouter key={index} underline="hover" color="inherit" to={item.path} >
         {item.name}
       </LinkRouter>
     );
   } else {
-    return <Typography>{item.name}</Typography>;
+    return <Typography key={index}>{item.name}</Typography>;
   }
 }
 
@@ -38,7 +38,7 @@ function Navigation(props) {
         <LinkRouter underline="hover" color="inherit" to="/">
           Workflows
         </LinkRouter>
-        {paths.map((item) => getBreadcrumb(item))}
+        {paths.map((item, index) => getBreadcrumb(item, index))}
       </Breadcrumbs>
     </Toolbar>
   );

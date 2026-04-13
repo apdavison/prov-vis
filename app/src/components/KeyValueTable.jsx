@@ -31,15 +31,15 @@ function KeyValueTable(props) {
 
       rows.push(
         <TableRow key={key} sx={{ "&:last-child td": { border: 0 } }}>
-          <TableCell>{formatKey(key)}</TableCell>
-          <TableCell>{valueStr}</TableCell>
+          <TableCell sx={{ whiteSpace: "nowrap" }}>{formatKey(key)}</TableCell>
+          <TableCell sx={{ wordBreak: "break-all" }}>{valueStr}</TableCell>
         </TableRow>
       );
     }
   }
 
   return (
-    <TableContainer component={Paper} sx={{width: "max-content"}}>
+    <TableContainer component={Paper} sx={{width: "100%", ...props.sx}}>
       <Table size="small" aria-label="key-value table">
         <TableBody>{rows}</TableBody>
       </Table>

@@ -7,8 +7,9 @@ function fullName(person) { // todo: add link if ORCID provided
 }
 
 function getTimeStamp(stages) {
+  if (!stages || stages.length === 0) return "";
   const timestamps = stages.map(stage => new Date(stage.start_time));
-  return timestamps.sort()[0].toISOString()
+  return timestamps.sort()[0].toISOString();
 }
 
 function getRecipeName(recipe) {
